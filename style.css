@@ -1,0 +1,174 @@
+/* Fuentes personalizadas */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #121212; /* Fondo oscuro más profundo */
+    color: #e0e0e0; /* Color de texto general */
+}
+
+/* Estilos Generales */
+.container {
+    max-width: 1200px;
+}
+
+/* Header */
+.header {
+    background-color: rgba(18, 18, 18, 0.8); /* Fondo semi-transparente */
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(8px); /* Efecto de desenfoque más pronunciado */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu {
+    background-color: rgba(18, 18, 18, 0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+/* Botones */
+.btn-primary {
+    background: linear-gradient(to right, #b9b6b4, #ff8000); /* from-yellow-500 to-orange-500 */
+    color: #000000; /* text-gray-900 */
+    font-weight: bold;
+    padding: 12px 32px; /* py-3 px-8 */
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); /* shadow-lg */
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s, color 0.3s, filter 0.3s;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+.btn-primary:hover {
+    background: linear-gradient(to right, #fde68a, #fdba74); /* hover:from-yellow-400 hover:to-orange-400 */
+    color: #000;
+    transform: scale(1.05);
+}
+.btn-primar:hover {
+    color: #000;
+    background-color: #0b469d;
+    padding: 18px;
+}
+.btn-secondary {
+    background: linear-gradient(to right, #8b5cf6, #ec4899); /* from-purple-600 to-pink-600 */
+    color: #fff;
+    font-weight: bold;
+    padding: 12px 32px; /* py-3 px-8 */
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); /* shadow-lg */
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s, color 0.3s, filter 0.3s;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+.btn-secondary:hover {
+    background: linear-gradient(to right, #a78bfa, #f472b6); /* hover:from-purple-500 hover:to-pink-500 */
+    transform: scale(1.05);
+}
+
+/* Sección Hero (Inicio) */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/fondo.jpeg'); /* Imagen de fondo con degradado */
+    background-size: cover;
+    background-position: center;
+    min-height: 90vh; /* Altura mínima para que se vea bien */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9); /* Sombra para el texto */
+}
+
+/* Tarjetas de Servicio */
+.service-card {
+    background: linear-gradient(145deg, #202020, #151515); /* Degradado oscuro más sutil */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.service-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Sección de Promoción - Fondo y Animación */
+.promotion-section {
+    background: linear-gradient(135deg, #6a0dad 0%, #d40078 100%); /* Degradado vibrante */
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 0; /* Más padding para impacto */
+}
+
+.promotion-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
+    animation: rotate-gradient 30s linear infinite;
+}
+
+@keyframes rotate-gradient {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Animación para el título de promoción */
+@keyframes pulse-promo {
+    0% { transform: scale(1); opacity: 1; text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+    50% { transform: scale(1.02); opacity: 0.95; text-shadow: 0 0 15px rgba(255,255,255,0.8); }
+    100% { transform: scale(1); opacity: 1; text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+}
+
+.animate-pulse-promo {
+    animation: pulse-promo 3s infinite ease-in-out;
+}
+
+.promo-card {
+    background-color: rgba(255, 255, 255, 0.15); /* Fondo más transparente */
+    backdrop-filter: blur(10px); /* Más desenfoque */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.promo-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+.promo-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+.promo-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+}
+
+#resultado-premio {
+    transition: all 0.5s ease-in-out;
+    transform: translateY(10px);
+    opacity: 0;
+}
+#resultado-premio.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.8rem;
+    }
+    .hero-section p {
+        font-size: 1rem;
+    }
+    .promotion-section {
+        padding: 4rem 0;
+    }
+}
