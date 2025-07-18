@@ -1,60 +1,86 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Manejo del menú móvil
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
+// Toggle mobile menu
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
 
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Cerrar el menú móvil al hacer clic en un enlace
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
-        });
-    }
-
-    // Lógica de la sección de Promoción
-    const montoInput = document.getElementById('monto-veterinaria');
-    const calcularPremioBtn = document.getElementById('calcular-premio');
-    const resultadoPremioDiv = document.getElementById('resultado-premio');
-
-    if (montoInput && calcularPremioBtn && resultadoPremioDiv) {
-        calcularPremioBtn.addEventListener('click', () => {
-            const monto = parseFloat(montoInput.value);
-
-            if (isNaN(monto) || monto <= 0) {
-                resultadoPremioDiv.textContent = 'Por favor, ingresa un monto válido.';
-                resultadoPremioDiv.classList.remove('hidden');
-                return;
-            }
-
-            let premio = '';
-            if (monto >= 10000) {
-                premio = '¡Felicidades! Has ganado un Paseo Grupal GRATIS.';
-            } else if (monto >= 5000) {
-                premio = '¡Excelente! Tienes un 20% de descuento en tu próximo Paseo Individual.';
-            } else if (monto >= 2000) {
-                premio = '¡Genial! Disfruta de un 10% de descuento en cualquier servicio.';
-            } else {
-                premio = 'Sigue sumando para ganar un premio. ¡Gracias por tu compra!';
-            }
-
-            resultadoPremioDiv.textContent = premio;
-            resultadoPremioDiv.classList.remove('hidden');
-        });
-    }
-
-    // Suavizado del scroll para los enlaces de navegación
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
+        }
+        // Close mobile menu after clicking
+        document.querySelector('.nav-links').classList.remove('active');
     });
+});
+
+// Add animation on scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+        }
+    });
+}, observerOptions);
+
+// Observe all cards for animations
+document.querySelectorAll('.service-card, .about-card, .contact-card').forEach(card => {
+    observer.observe(card);
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(e) {
+    const navLinks = document.querySelector('.nav-links');
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+        navLinks.classList.remove('active');
+    }
+});
+
+// Highlight active navigation link
+window.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 200)) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === current) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Add loading animation
+window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
+});
+
+// Preloader (optional)
+document.addEventListener('DOMContentLoaded', function() {
+    // Add fade-in class to hero content immediately
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) {
+        heroContent.classList.add('fade-in');
+    }
 });
