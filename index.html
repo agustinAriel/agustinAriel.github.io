@@ -3,229 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paseos Caninos - Tu Mejor Opción</title>
-    <link rel="shortcut icon" href="img/a.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>PaseaChocos - Paseador de Perros Profesional</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white">Paseos de Chocos 🐶</a>
-            <nav class="hidden md:block">
-                <ul class="flex space-x-6">
-                    <li><a href="#inicio" class="text-white hover:text-yellow-400 transition duration-300">Inicio</a></li>
-                    <li><a href="#sobre-mi" class="text-white hover:text-yellow-400 transition duration-300">Sobre Mí</a></li>
-                    <li><a href="#servicios" class="text-white hover:text-yellow-400 transition duration-300">Servicios</a></li>
-                    <li><a href="#promocion" class="text-white hover:text-yellow-400 transition duration-300">Promoción</a></li>
-                    <li><a href="#contacto" class="text-white hover:text-yellow-400 transition duration-300">Contacto</a></li>
-                </ul>
-            </nav>
-            <button id="mobile-menu-button" class="md:hidden text-white text-2xl focus:outline-none">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-        <nav id="mobile-menu" class="mobile-menu hidden md:hidden">
-            <ul class="flex flex-col items-center space-y-4 py-4">
-                <li><a href="#inicio" class="text-white hover:text-yellow-400 transition duration-300">Inicio</a></li>
-                <li><a href="#sobre-mi" class="text-white hover:text-yellow-400 transition duration-300">Sobre Mí</a></li>
-                <li><a href="#servicios" class="text-white hover:text-yellow-400 transition duration-300">Servicios</a></li>
-                <li><a href="#promocion" class="text-white hover:text-yellow-400 transition duration-300">Promoción</a></li>
-                <li><a href="#contacto" class="text-white hover:text-yellow-400 transition duration-300">Contacto</a></li>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">🐾 Paseos Chocos VIP</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
         </nav>
     </header>
 
-    <main>
-        <!-- Sección de Inicio -->
-        <section id="inicio" class="hero-section text-white flex items-center justify-center text-center">
-            <div class="container mx-auto px-4">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4">La Aventura Espera a Tu Mejor Amigo</h1>
-                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Ofrezco paseos llenos de alegría, seguridad y exploración para que tu perro viva experiencias inolvidables.</p>
-                <a href="#servicios" class="btn-primary">Descubre la Felicidad Canina</a>
-            </div>
-        </section>
-
-        <!-- Sección Sobre Mí -->
-        <section id="sobre-mi" class="py-16 md:py-24 bg-gray-900 text-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12">Mi Compromiso: Amor y Cuidado Canino</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div class="text-lg leading-relaxed">
-                        <p class="mb-4">Hola, soy Ariel :) , y mi vida ha estado siempre ligada a la pasión por los perros. Cada ladrido, cada cola moviéndose, me recuerda la importancia de su bienestar. Mi misión es ir más allá de un simple paseo; busco ofrecer una experiencia enriquecedora que contribuya a su salud física y mental, y a la tranquilidad de sus familias.</p>
-                        <p class="mb-4">Mi visión es construir una comunidad donde cada perro reciba el amor, la actividad y la socialización que necesita para ser un compañero feliz y equilibrado. Creo firmemente que un perro paseado es un perro feliz, y mi compromiso es ser ese puente hacia su bienestar.</p>
-                        <h3 class="text-2xl font-semibold mb-4">Principales Pilares:</h3>
-                        <ul class="list-disc list-inside space-y-2">
-                            <li><span class="font-bold">Pasión Genuina:</span> Cada paseo es impulsado por un amor incondicional hacia los animales.</li>
-                            <li><span class="font-bold">Seguridad Absoluta:</span> Implementamos protocolos estrictos para garantizar un entorno seguro.</li>
-                            <li><span class="font-bold">Confianza Mutua:</span> Fomentamos una relación transparente y de respeto con dueños y mascotas.</li>
-                            <li><span class="font-bold">Desarrollo Integral:</span> Promovemos la estimulación física, mental y social en cada salida.</li>
-                        </ul>
-                    </div>
-                    <div class="flex justify-center">
-                        <img src="img/Ariel.jpeg" alt="Imagen de [Tu Nombre] con un perro" class="rounded-lg shadow-lg w-full max-w-md">
-                    </div>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>PASEADOR PROFESIONAL</h1>
+                <p>Cuidado especializado para tu mejor amigo. Paseos seguros, confiables y llenos de amor para que tu mascota esté siempre feliz y saludable.</p>
+                <div class="cta-buttons">
+                    <a href="#contacto" class="btn btn-primary">Contactar Ahora</a>
+                    <a href="#servicios" class="btn btn-secondary">Ver Servicios</a>
                 </div>
             </div>
-        </section>
+            <div class="hero-model">DOGS</div>
+        </div>
+    </section>
 
-        <!-- Sección de Servicios -->
-        <section id="servicios" class="py-16 md:py-24 bg-gray-800 text-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-5xl font-bold text-center mb-12">Servicios Pensados para Cada Pata</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Servicio Individual -->
-                    <div class="service-card p-8 rounded-lg shadow-xl text-center">
-                        <i class="fas fa-dog text-5xl text-yellow-400 mb-6"></i>
-                        <h3 class="text-2xl font-semibold mb-4">Paseo VIP (Individual)</h3>
-                        <p class="text-gray-300 mb-4">Atención exclusiva y personalizada para tu perro, ideal para aquellos que necesitan un enfoque único o específico.</p>
-                        <ul class="text-left text-gray-300 list-disc list-inside space-y-2">
-                            <li>Foco total en tu mascota.</li>
-                            <li>Rutas adaptadas a sus preferencias.</li>
-                            <li>Perfecto para perros con necesidades especiales.</li>
-                            <li>Horarios flexibles y a tu medida.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Servicio Grupal -->
-                    <div class="service-card p-8 rounded-lg shadow-xl text-center">
-                        <i class="fas fa-users-cog text-5xl text-yellow-400 mb-6"></i>
-                        <h3 class="text-2xl font-semibold mb-4">Manada Feliz (Grupal)</h3>
-                        <p class="text-gray-300 mb-4">Oportunidad de socialización controlada y juego interactivo con compañeros compatibles, fomentando un comportamiento equilibrado.</p>
-                        <ul class="text-left text-gray-300 list-disc list-inside space-y-2">
-                            <li>Interacción segura y supervisada.</li>
-                            <li>Desarrollo de habilidades sociales.</li>
-                            <li>Grupos pequeños y compatibles.</li>
-                            <li>Diversión garantizada en compañía.</li>
-                        </ul>
-                    </div>
-
-                    <!-- Servicio de Cuidado y Aventura -->
-                    <div class="service-card p-8 rounded-lg shadow-xl text-center">
-                        <i class="fas fa-hiking text-5xl text-yellow-400 mb-6"></i>
-                        <h3 class="text-2xl font-semibold mb-4">Exploradores Urbanos (Aventura)</h3>
-                        <p class="text-gray-300 mb-4">Paseos extendidos y llenos de aventura en diferentes entornos, estimulando su curiosidad y energía al máximo.</p>
-                        <ul class="text-left text-gray-300 list-disc list-inside space-y-2">
-                            <li>Rutas variadas y emocionantes.</li>
-                            <li>Estimulación mental y física intensa.</li>
-                            <li>Ideal para perros con mucha energía.</li>
-                            <li>Sesiones más largas para mayor disfrute.</li>
-                        </ul>
-                    </div>
+    <!-- About Section -->
+    <section id="sobre-mi" class="section">
+        <div class="container">
+            <h2 class="section-title">Sobre Mí</h2>
+            <div class="about-grid">
+                <div class="about-card fade-in">
+                    <h3>🎯 Misión</h3>
+                    <p>Brindar el mejor cuidado y atención a las mascotas, asegurando su bienestar físico y emocional a través de paseos profesionales y seguros.</p>
+                </div>
+                <div class="about-card fade-in">
+                    <h3>👁️ Visión</h3>
+                    <p>Ser el servicio de paseador de perros más confiable y querido de la ciudad, creando vínculos duraderos con las mascotas y sus familias.</p>
+                </div>
+                <div class="about-card fade-in">
+                    <h3>❤️ Valores</h3>
+                    <p>Amor por los animales, responsabilidad, puntualidad, transparencia y dedicación total al bienestar de cada mascota bajo mi cuidado.</p>
                 </div>
             </div>
-        </section>
+            <div class="about-card fade-in" style="margin-top: 2rem; text-align: center;">
+                <h3>🐕 Sobre Mí</h3>
+                <p>Soy un apasionado cuidador de mascotas con años de experiencia. Crecí rodeado de animales y entiendo la importancia de brindar amor, ejercicio y cuidado personalizado a cada perro. Mi objetivo es que tanto vos como tu mascota se sientan completamente seguros y felices con mi servicio.</p>
+            </div>
+        </div>
+    </section>
 
-        <!-- Sección de Promoción -->
-        <section id="promocion" class="promotion-section text-white relative">
-            <div class="container mx-auto px-4 relative z-10 text-center">
-                <h2 class="text-3xl md:text-5xl font-bold mb-8 animate-pulse-promo">¡Desbloquea Premios Increíbles para tu Fiel Amigo!</h2>
-                <p class="text-lg md:text-xl mb-12 max-w-3xl mx-auto">Ingresa el monto de tu última compra en la veterinaria y descubre qué sorpresa te espera.</p>
-
-                <div class="promo-card p-8 rounded-xl shadow-2xl max-w-lg mx-auto">
-                    <label for="monto-veterinaria" class="block text-xl font-semibold mb-4">Monto de tu compra en la veterinaria ($):</label>
-                    <input type="number" id="monto-veterinaria" placeholder="Ej: 7500" class="promo-input w-full p-4 rounded-lg mb-6 text-center text-lg">
-                    <button id="calcular-premio" class="btn-secondary">¡Quiero mi Premio!</button>
-
-                    <div id="resultado-premio" class="mt-8 text-3xl font-extrabold text-yellow-200 hidden">
-                        <!-- El premio se mostrará aquí -->
-                    </div>
+    <!-- Services Section -->
+    <section id="servicios" class="section">
+        <div class="container">
+            <h2 class="section-title">Mis Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <h3>🚶 Paseo Básico</h3>
+                    <p>Paseo de 30-45 minutos por el barrio, perfecto para perros que necesitan ejercicio diario regular.</p>
+                    <ul style="margin: 1rem 0; color: #cccccc;">
+                        <li>✓ Duración: 30-45 min</li>
+                        <li>✓ Descuento por paquetes</li>
+                        <li>✓ Reporte con fotos</li>
+                        <li>✓ Agua fresca disponible</li>
+                    </ul>
+                    <div class="price">$5.000</div>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>🐾 Paseo en Grupo Reducido</h3>
+                    <p>Ideal para que tu perro socialice y se divierta en grupos pequeños, siempre bajo supervisión profesional.</p>
+                    <ul style="margin: 1rem 0; color: #cccccc;">
+                        <li>✓ Duración: 60-90 min</li>
+                        <li>✓ Parques y áreas verdes</li>
+                        <li>✓ Grupos reducidos y compatibles</li>
+                        <li>✓ Reporte detallado</li>
+                    </ul>
+                    <div class="price">$3.500</div>
+                </div>
+                <div class="service-card fade-in">
+                    <h3>🏠 Cuidado en Casa</h3>
+                    <p>Visitas domiciliarias para alimentación, compañía y cuidado básico cuando no estés.</p>
+                    <ul style="margin: 1rem 0; color: #cccccc;">
+                        <li>✓ Alimentación programada</li>
+                        <li>✓ Compañía y juegos</li>
+                        <li>✓ Limpieza básica</li>
+                        <li>✓ Reporte de actividades</li>
+                    </ul>
+                    <div class="price">$</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Sección de Contacto -->
-        <section id="contacto" class="py-16 md:py-24 bg-gray-900 text-white">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-5xl font-bold mb-12">Contacto</h2>
-                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Estoy listo para escuchar tus necesidades y coordinar el bienestar de tu compañero peludo. ¡No dudes en contactarme!</p>
-                <div class="flex justify-center space-x-8 mb-12">
-                    <a href="https://wa.link/0ivlej" target="_blank" class="text-yellow-400 hover:text-yellow-300 transition duration-300 text-5xl transform hover:scale-110">
-                        <i class="fab fa-whatsapp"></i>
+    <!-- Contact Section -->
+    <section id="contacto" class="section">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-grid">
+                <div class="contact-card fade-in">
+                    <h3>📱 WhatsApp</h3>
+                    <a href="https://wa.me/+542604293669" target="_blank">+54 260 4293669</a>
+                    <p>Respuesta inmediata</p>
+                </div>
+                <div class="contact-card fade-in">
+                    <h3>📧 Email</h3>
+                    <a href="mailto:arielbarros313@gmail.com">arielbarros313@gmail.com</a>
+                    <p>Consultas y presupuestos</p>
+                </div>
+                <div class="contact-card fade-in">
+                    <h3>📷 Instagram</h3>
+                    <a href="https://www.instagram.com/ariel_agust1n/" target="_blank">@ariel_agust1n</a>
+                    <p>Fotos y updates diarios</p>
+                </div>
+                <div class="contact-card fade-in">
+                    <h3>💼 LinkedIn</h3>
+                    <a href="www.linkedin.com/in/arielbarros2000" target="_blank">Ariel Barros
+
+
                     </a>
-                    <a href="https://www.instagram.com/ariel_agust1n/" target="_blank" class="text-yellow-400 hover:text-yellow-300 transition duration-300 text-5xl transform hover:scale-110">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="mailto:arielbarros313@gmail.com" class="text-yellow-400 hover:text-yellow-300 transition duration-300 text-5xl transform hover:scale-110">
-                        <i class="fas fa-envelope"></i>
-                    </a>
+                    <p>Perfil profesional</p>
                 </div>
-                <p class="text-lg text-gray-400">O envíame un correo directamente a: <a href="mailto:TUCORREO@EMAIL.COM" class="text-yellow-400 hover:underline">arielbarros313@gmail.com</a></p>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer class="bg-gray-950 text-white py-8 text-center">
-        <div class="container mx-auto px-4">
-            <p>&copy; 2024 Paseos Caninos con Amor. Todos los derechos reservados.</p>
+
+    <!-- Beneficios Section -->
+    <section id="beneficios" class="section">
+        <div class="container">
+            <h2 class="section-title">Beneficios</h2>
+            <div class="beneficios-grid-multi">
+                <!-- Tarjeta 1 -->
+                <div class="beneficio-card">
+                    <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=600&q=80" alt="Perro feliz" class="beneficio-img">
+                    <div class="beneficio-dropdown">
+                        <button class="btn btn-primary" onclick="toggleBeneficioMenu('beneficio-menu-1')">Ver más ▼</button>
+                        <ul id="beneficio-menu-1" class="beneficio-menu">
+                            <li><strong>Contacto:</strong> WhatsApp: +54 260 4293669 | Email: arielbarros313@gmail.com</li>
+                            <li><strong>Instagram:</strong> @ariel_agust1n</li>
+                            <li><strong>Servicios:</strong> Paseo Básico, Paseo en Grupo Reducido, Cuidado en Casa</li>
+                            <li><strong>Horarios:</strong> Lunes a Sábado, 8 a 20 hs</li>
+                            <li><strong>Ubicación:</strong> San Rafael, Mendoza</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Tarjeta 2 -->
+                <div class="beneficio-card">
+                    <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?auto=format&fit=crop&w=600&q=80" alt="Perros paseando" class="beneficio-img">
+                    <div class="beneficio-dropdown">
+                        <button class="btn btn-primary" onclick="toggleBeneficioMenu('beneficio-menu-2')">Ver más ▼</button>
+                        <ul id="beneficio-menu-2" class="beneficio-menu">
+                            <li><strong>Contacto:</strong> WhatsApp: +54 260 4293669 | Email: arielbarros313@gmail.com</li>
+                            <li><strong>Instagram:</strong> @ariel_agust1n</li>
+                            <li><strong>Servicios:</strong> Paseo Básico, Paseo en Grupo Reducido, Cuidado en Casa</li>
+                            <li><strong>Horarios:</strong> Lunes a Sábado, 8 a 20 hs</li>
+                            <li><strong>Ubicación:</strong> San Rafael, Mendoza</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Tarjeta 3 -->
+                <div class="beneficio-card">
+                    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Reloj y mapa" class="beneficio-img">
+                    <div class="beneficio-dropdown">
+                        <button class="btn btn-primary" onclick="toggleBeneficioMenu('beneficio-menu-3')">Ver más ▼</button>
+                        <ul id="beneficio-menu-3" class="beneficio-menu">
+                            <li><strong>Contacto:</strong> WhatsApp: +54 260 4293669 | Email: arielbarros313@gmail.com</li>
+                            <li><strong>Instagram:</strong> @ariel_agust1n</li>
+                            <li><strong>Servicios:</strong> Paseo Básico, Paseo en Grupo Reducido, Cuidado en Casa</li>
+                            <li><strong>Horarios:</strong> Lunes a Sábado, 8 a 20 hs</li>
+                            <li><strong>Ubicación:</strong> San Rafael, Mendoza</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 PaseaChocos. Todos los derechos reservados. Hecho con ❤️ para nuestros amigos de cuatro patas.</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Manejo del menú móvil
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                });
-
-                // Cerrar el menú móvil al hacer clic en un enlace
-                mobileMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
-                    });
-                });
-            }
-
-            // Lógica de la sección de Promoción
-            const montoInput = document.getElementById('monto-veterinaria');
-            const calcularPremioBtn = document.getElementById('calcular-premio');
-            const resultadoPremioDiv = document.getElementById('resultado-premio');
-
-            if (montoInput && calcularPremioBtn && resultadoPremioDiv) {
-                calcularPremioBtn.addEventListener('click', () => {
-                    const monto = parseFloat(montoInput.value);
-
-                    if (isNaN(monto) || monto <= 0) {
-                        resultadoPremioDiv.textContent = 'Por favor, ingresa un monto válido.';
-                        resultadoPremioDiv.classList.remove('hidden');
-                        resultadoPremioDiv.classList.add('show');
-                        return;
-                    }
-
-                    let premio = '';
-                    if (monto >= 15000) {
-                        premio = '¡Guau! ¡Has ganado un PACK de 5 Paseos GRATIS!';
-                    } else if (monto >= 8000) {
-                        premio = '¡Increíble! Disfruta de un 30% de descuento en tu próximo Paseo Individual.';
-                    } else if (monto >= 3000) {
-                        premio = '¡Felicidades! Tienes un 15% de descuento en cualquier servicio.';
-                    } else {
-                        premio = 'Sigue sumando para ganar un premio. ¡Cada compra cuenta!';
-                    }
-
-                    resultadoPremioDiv.textContent = premio;
-                    resultadoPremioDiv.classList.remove('hidden');
-                    resultadoPremioDiv.classList.add('show'); // Añadir clase para la animación
-                });
-            }
-
-            // Suavizado del scroll para los enlaces de navegación
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-        });
+    function toggleBeneficioMenu(id) {
+        var menu = document.getElementById(id);
+        menu.classList.toggle('active');
+    }
     </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
