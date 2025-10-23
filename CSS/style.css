@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+}
+.navbar{
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  overflow: hidden;
+  background-color: none;
+  z-index: 1000;
+padding: 15px;
+}
+/* Navbar: transparente por defecto, se vuelve vino cuando se añade .scrolled */
+.navbar{
+  background-color: transparent;
+  transition: background-color 0.5s ease, padding 0.8s ease;
+}
+.navbar.scrolled{
+  background-color: rgba(123,3,35,0.95); /* color vino */
+  box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+}
+.navbar-logo{
+  height: 100%;
+  width: auto;
+  padding-left: 25px;
+}
+
+.navbar-menu{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar-item{
+  margin: 0 20px;
+}
+.navbar-item a{
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.navbar-item a:hover{
+  color: rgb(0, 0, 0);
+}
+
+.card{
+  padding: 0px 100px 0 180px ;
+  background: linear-gradient(180deg, #7b0323, #2b000d, #000000);
+  height: 100vh;
+  position: absolute;
+}
+.card_title .palabra1{
+  position: relative;
+  font-family: "Squada One", sans-serif;
+  top: 150px;
+  font-size: 10rem;
+  color: white;
+}
+.card_title .palabra2{
+  position: relative;
+  font-family: "Squada One", sans-serif;
+  font-size: 10rem;
+  top:380px;
+  text-align: end;
+  direction: rtl;
+  color: white;
+  z-index: 2;
+}
+
+.card-images{
+  position: relative;
+  background-color: wheat;
+
+}
+.card_image1{
+  position: absolute;
+  width: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+}
+.card_image2{
+  position: absolute;
+  width: 300px;
+  top: 50px;
+  left: 450px;
+  transform: rotate(30deg);
+  transform-origin: center center;
+
+}
+.descripcion{
+  position: relative;
+  width: 40%;
+  top: 50%;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+.cartas{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.about{
+  position: relative;
+  top: 100vh;
+  background-image: url('../IMG/fondoB.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 60vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 2rem;
+  padding: 5%;
+  align-items: center;
+}
+
+.sobre_mi{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 80%;
+  border-radius: 25px;
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.sobre_Mdz{
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 80%;
+  border-radius: 25px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.sobre_Mdz:hover, .sobre_mi:hover{
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.sobre_mi h2{
+  font-family: "Squada One", sans-serif;
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+.sobre_mi, .sobre_Mdz p{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+}
+
+.sobre_Mdz h2{
+  font-family: "Squada One", sans-serif;
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}
+
+.redes{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  /* colocar .redes en la fila completa debajo de las dos columnas */
+  grid-column: 1 / -1;
+  padding-bottom: 50px;
+}
+.redes img {
+  width: 40px; /* ajustá según tu diseño */
+  height: auto;
+  filter: brightness(0) invert(1); /* convierte a blanco si son íconos oscuros */
+  transition: transform 0.3s ease;
+}
+
+.redes img:hover {
+  transform: scale(1.1); /* efecto sutil al pasar el mouse */
+}
+
+.formulario{
+  background-color: #ffffff;
+  position: relative;
+  height: 100vh;
+  top: 85vh;
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(to bottom, #000000, #5c0a2b);
+  align-items: center;
+  justify-content: center;
+}
+.form{
+  backdrop-filter: blur(3px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding: 3rem;
+  width: 30%;
+  height: auto;
+  display:inline-flex;
+  flex-direction: column;
+  margin-right: 50px;
+  gap: 1rem;
+}
+input[type="text"], input[type="email"], textarea {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.form select{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.form button {
+  padding: 10px;
+  width: 50%;
+  background-color: #7b0323;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.form button:hover {
+  background-color: #5c0a2b;
+}
+.form label{
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;  
+  font-size: 18px;
+}
+.textoform{
+  width: 40%;
+  padding: 30px;
+  margin: 0 0 0 60px;
+}
+.textoform h2{
+  font-family: "Squada One", sans-serif;
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+.textoform p{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.footer {
+  top:80vh;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: linear-gradient(to bottom, #5c0a2b, #000000);
+  color: #fff;
+  padding: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-col {
+  padding: 20px 0 0 0;
+  flex: 1;
+  margin: 1rem;
+  min-width: 250px;
+}
+
+.footer-col img {
+  height: 150px;
+  display: block;
+  margin: 0 auto;
+  filter: brightness(0) invert(1);
+}
+
+.footer-col h3 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-col ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #e0b0ff;
+}
+
+/* ========================================= */
+/* MEDIA QUERIES PARA RESPONSIVE       */
+/* ========================================= */
+
+/* --- Tabletas y Dispositivos de Pantalla Mediana (Max-width: 992px) --- */
+@media (max-width: 992px) {
+  
+    /* --- CABECERA (Header/Navbar) --- */
+    .navbar{
+      width: 90%;
+      overflow: hidden;
+    }
+    .navbar-item a {
+        font-size: 1rem; /* Reducir tamaño de fuente */
+        margin: 0 10px;
+    }
+    .navbar-logo {
+        height: 80%;
+    }
+
+    /* --- SECCIÓN PRINCIPAL (Card) --- */
+    .card {
+        /* Reducir padding horizontal para ganar espacio */
+        padding: 0 50px;
+        padding-top: 80px;
+        width: 992px;
+        overflow: hidden;
+    }
+    .card_title .palabra1,
+    .card_title .palabra2 {
+        font-size: 7rem; /* Reducir tamaño del título */
+        text-align: center;
+    }
+    .card_title .palabra1 {
+        top: 100px;
+    }
+    .card_title .palabra2 {
+        top: 250px;
+    }
+    
+    /* Ajustar imágenes para que no se salgan del contenedor */
+    .card_image1 {
+        width: 400px;
+        transform: translate(-50%, -40%);
+    }
+    .card_image2 {
+        width: 250px;
+        transform: translate(-50%, -30%) rotate(30deg);
+    }
+
+    .descripcion {
+        width: 45%; /* ancho al texto */
+        top: 45%;
+        font-size: 14px;
+    }
+
+    /* --- SECCIÓN ABOUT (Sobre Mí/Mendoza) --- */
+    .about {
+        height: auto; /* Dejar que el contenido defina la altura */
+        flex-direction: column; /* Apilar las dos columnas verticalmente */
+        padding: 5% 10%;
+        width: 900px;
+        overflow: hidden;
+    }
+    .sobre_mi, .sobre_Mdz {
+        height: auto;
+        width: 80%;
+        padding: 2rem 1rem;
+    }
+    .sobre_mi h2, .sobre_Mdz h2 {
+        font-size: 3.5rem; /* Reducir tamaño de títulos de About */
+    }
+    .sobre_mi p, .sobre_Mdz p {
+        font-size: 1.1rem;
+    }
+
+    /* Ajustar posición de REDES (estaba muy abajo) */
+    .redes {
+        top: 90vh; /* Subirlo un poco */
+        padding: 50px;
+        height: auto;
+    }
+
+    /* --- SECCIÓN FORMULARIO --- */
+    .formulario {
+        height: auto; /* Dejar que el contenido defina la altura */
+        flex-direction: column; /* Apilar texto y formulario */
+        padding: 50px 20px;
+        top: 90vh; /* Ajustar posición para que se vea después de About */
+        width: 992px;
+        overflow: hidden;
+    }
+    .textoform {
+        width: 80%; /* Más ancho */
+        margin: 0;
+        padding: 0 0 30px 0;
+        text-align: center;
+    }
+    .form {
+        width: 70%; /* Más ancho */
+        margin-right: 0;
+    }
+
+    /* --- FOOTER --- */
+    .footer {
+        top: 90vh; /* Ajustar posición */
+        flex-direction: column; /* Apilar las columnas */
+        align-items: center;
+        text-align: center;
+    }
+    .footer-col {
+        min-width: 80%; /* Ocupar casi todo el ancho */
+    }
+    .footer-col ul {
+        text-align: center;
+    }
+}
+
+/* --- Móviles y Dispositivos Pequeños (Max-width: 600px) --- */
+@media (max-width: 600px) {
+    /* --- CABECERA (Header/Navbar) --- */
+    .navbar {
+        height: auto;
+        flex-direction: column; /* Apilar logo y menú */
+        background-color: #000000a0; /* Agregar un fondo para que el texto se lea */
+        margin-top: 0;
+        padding: 10px 0;
+        position: static; /* Cambiar a estático para que ocupe espacio y no esté fijo */
+    }
+    .navbar-logo {
+        height: 50px;
+        padding: 0;
+        margin-bottom: 10px;
+    }
+    .navbar-menu {
+        flex-wrap: wrap; /* Permitir que los ítems salten de línea */
+        justify-content: center;
+        height: auto;
+    }
+    .navbar-item {
+        margin: 5px 10px;
+    }
+
+    /* --- SECCIÓN PRINCIPAL (Card) --- */
+    .card {
+        padding: 0 20px;
+        position: relative; /* Cambiar a relative para un flujo normal */
+        height: auto;
+        min-height: 80vh;
+    }
+    .card_title .palabra1,
+    .card_title .palabra2 {
+        position: static; /* Quitar posicionamiento absoluto */
+        font-size: 4rem;
+        text-align: center;
+        direction: ltr;
+        margin: 10px 0;
+    }
+    .card_title {
+        text-align: center;
+        padding-top: 50px; /* Separación después de la navbar */
+    }
+
+    /* Simplificar y centrar imágenes */
+    .card-images {
+        background-color: transparent;
+        height: 300px; /* Altura fija para el contenedor de las imágenes */
+    }
+    .card_image1, .card_image2 {
+        position: absolute;
+        width: 150px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(0deg); /* Centrar y quitar rotación */
+        opacity: 0.8; /* Suavizar la imagen de fondo si es necesario */
+    }
+    .card_image2 {
+        width: 200px;
+        transform: translate(-50%, -50%);
+        left: 55%; /* Ligeramente desplazada */
+        z-index: 5; /* Asegurar que la botella esté sobre el splash */
+    }
+    
+    .descripcion {
+        position: static; /* Quitar posicionamiento absoluto */
+        width: 100%;
+        margin-top: 280px; /* Espacio para que el texto aparezca debajo de las imágenes */
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    /* --- SECCIÓN ABOUT (Sobre Mí/Mendoza) --- */
+    .about {
+        top: 0; /* Ya no necesitamos el desplazamiento de 100vh */
+        padding: 10% 5%;
+    }
+    .sobre_mi h2, .sobre_Mdz h2 {
+        font-size: 3rem;
+    }
+    .sobre_mi p, .sobre_Mdz p {
+        font-size: 1rem;
+    }
+    
+    /* Ajustar posición de REDES */
+    .redes {
+        top: 0; 
+        padding-top: 20px;
+    }
+
+    /* --- SECCIÓN FORMULARIO --- */
+    .formulario {
+        top: 0; /* Ya no necesitamos el desplazamiento de 85vh */
+        padding: 30px 10px;
+    }
+    .form {
+        width: 90%;
+        padding: 2rem;
+    }
+    .form button {
+        width: 100%; /* Botón al ancho completo */
+    }
+
+    /* --- FOOTER --- */
+    .footer {
+        top: 0; /* Ya no necesitamos el desplazamiento de 80vh */
+    }
+    .footer-col h3 {
+        font-size: 1.5rem;
+    }
+}

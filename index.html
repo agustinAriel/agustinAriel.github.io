@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
+    <title>Uncorking Mendoza</title>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <img src="IMG/logob.png" class="navbar-logo" alt="Logo de Uncorking Mendoza">
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="index.html">INICIO</a></li>
+                <li class="navbar-item"><a href="productos.html">PRODUCTOS</a></li>
+                <li class="navbar-item"><a href="#sobre_mi">SOBRE MI</a></li>
+                <li class="navbar-item"><a href="#contacto">CONTACTO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="card">
+            <h1 class="card_title">
+                <span class="palabra1">UNCORKING</span>
+                <span class="palabra2">MENDOZA</span>
+            </h1>
+            <div class="card-images">
+                <img src="IMG/Wine-splash.png" class="card_image1" alt="Logo de Uncorking Mendoza">
+                 <img src="IMG/winw-Mendoza.png" class="card_image2" alt="Una botella de vino de mendoza">
+            </div>
+            <div class="descripcion">
+                <p class="card_description">Descubri la esensia de Mendoza, copa a copa. En Uncorking Mendoza celebramos los vinos más destacados de cada departamento de la provincia, explorando sus perfiles únicos, sus terroirs, singularidades y las historias que los hacen inolvidables.</p>
+            </div>
+            
+        </section>
+        <section >
+            <div class="about">
+                <div class="sobre_mi" id="sobre_mi">
+                    <h2>SOBRE MÍ</h2>
+                    <p>Soy Ariel, creador de Uncorking Mendoza. Nací y crecí en esta tierra de vinos, donde cada copa cuenta una historia de sol, montaña y tradición. Mi pasión por la física, el diseño y la comunicación se entrelaza en este proyecto, que busca celebrar lo mejor de cada departamento vitivinícola mendocino.
+                    Desde la tipografía hasta el tono de cada palabra, todo en este sitio está pensado para transmitir elegancia, claridad y calidez. Además de explorar el mundo del vino, trabajo en atención al cliente, donde aprendo cada día a escuchar con empatía y conectar con las personas.
+                    Uncorking Mendoza es más que una guía: es una invitación a descubrir, sentir y brindar por lo que nos une.</p>
+                </div>
+                <div class="sobre_Mdz">
+                    <h2>SOBRE MENDOZA</h2>
+                    <p>Mendoza es mucho más que una provincia: es un paisaje de altura, sol y silencio que da vida a algunos de los vinos más admirados del mundo. Desde los Andes hasta los viñedos que se extienden como alfombras verdes, cada rincón guarda una historia de esfuerzo, tradición y belleza.
+                    Aquí, el Malbec encontró su hogar. Y con él, una cultura que celebra el encuentro, la tierra y el tiempo. Cada departamento vitivinícola —de Luján de Cuyo a San Rafael, de Maipú a Tupungato— aporta su carácter único, su clima, su suelo, su alma.
+                    Uncorking Mendoza nace de ese amor por lo local, por lo auténtico. Es una invitación a descubrir la diversidad de estilos, paisajes y sabores que hacen de Mendoza un lugar inolvidable.</p>
+                </div>
+                 <div class="redes">
+                    <a href="https://www.facebook.com" target="_blank" >
+                        <img src="IMG/001-instagram.png" alt="INSTAGRAM">
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank">
+                        <img src="IMG/002-whatsapp.png" alt="WHATSAPP">
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank">
+                        <img src="IMG/003-gmail.png" alt="GMAIL">
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank">
+                        <img src="IMG/004-linkedin.png" alt="LINKEDIN">
+                    </a>
+            </div>
+            </div>
+
+           
+        </section>
+        <section class="formulario">
+            <div class="textoform">
+                <h2>Descubrí tu cepa mendocina</h2>
+                <p>Mendoza vibra en cada copa, en cada valle, en cada historia. Contanos quién sos y qué rincón de nuestra tierra te inspira. Así podremos acercarte contenidos, experiencias y sabores que resuenen con tu esencia.</p>
+            </div>
+            
+            <form class="form">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="departamento">Departamento preferido:</label>
+                <select id="departamento" name="departamento" required>
+                    <option value="capital">Capital</option>
+                    <option value="godoycruz">Godoy Cruz</option>
+                    <option value="guaymallen">Guaymallén</option>
+                    <option value="lasheras">Las Heras</option>
+                    <option value="lujan">Luján de Cuyo</option>
+                    <option value="maipu">Maipú</option>
+                    <option value="lavalle">Lavalle</option>
+                    <option value="sanmartin">San Martín</option>
+                    <option value="rivadavia">Rivadavia</option>
+                    <option value="junin">Junín</option>
+                    <option value="sanjose">San José</option>
+                    <option value="tupungato">Tupungato</option>
+                    <option value="tunuyan">Tunuyán</option>
+                    <option value="sanrafael">San Rafael</option>
+                    <option value="malargue">Malargüe</option>
+                    <option value="generalalvear">General Alvear</option>
+                    <option value="launion">La Unión</option>
+                    <option value="santarosa">Santa Rosa</option>
+                </select>
+                <label for="cepa">¿Cuál es tu cepa favorita?</label>
+                    <select id="cepa" name="cepa">
+                    <option value="malbec">Malbec</option>
+                    <option value="cabernet">Cabernet Sauvignon</option>
+                    <option value="bonarda">Bonarda</option>
+                    <option value="syrah">Syrah</option>
+                    <option value="merlot">Merlot</option>
+                    <option value="torrontes">Torrontés</option>
+                    <option value="chardonnay">Chardonnay</option>
+                    <option value="sauvignon">Sauvignon Blanc</option>
+                    <option value="pedro">Pedro Giménez</option>
+                    <option value="moscatel">Moscatel de Alejandría</option>
+                    </select>
+
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+                
+    </main>
+
+    <footer class="footer" id="contacto">
+        <div class="footer-col logo">
+            <img src="IMG/logo-UM.png" alt="Uncorking Mendoza">
+        </div>
+
+        <div class="footer-col contacto">
+            <h3>Contactanos</h3>
+            <ul>
+            <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+            <li><a href="https://wa.me/5492610000000" target="_blank">WhatsApp</a></li>
+            <li><a href="mailto:uncorkingmendoza@gmail.com">Gmail</a></li>
+            <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col mapa">
+            <h3>Mendoza</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53608.97862571926!2d-68.89971886650068!3d-32.88332844624492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e093ec45179bf%3A0x205a78f6d20efa3a!2sMendoza%2C%20Capital%2C%20Mendoza!5e0!3m2!1ses!2sar!4v1761080928778!5m2!1ses!2sar" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </footer>
+
+
+</body>
+    <script>
+        (function(){
+            const nav = document.querySelector('.navbar');
+            if(!nav) return;
+            const threshold = window.innerHeight * 0.10; // 10vh
+            function checkScroll(){
+                if(window.scrollY > threshold) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            }
+            window.addEventListener('scroll', checkScroll, {passive:true});
+            // comprobar al cargar
+            checkScroll();
+        })();
+    </script>
+</html>
