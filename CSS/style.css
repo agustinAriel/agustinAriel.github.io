@@ -1,545 +1,648 @@
 @import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
-*{
-  margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Squada+One&display=swap');
+:root {
+    --bg-color-dark: #121212; /* Fondo casi negro */
+    --card-bg-color: #1c1c1c; /* Fondo de tarjeta un poco más claro */
+    --text-color-light: #f0f0f0; /* Texto principal claro */
+    --text-color-detail: #a0a0a0; /* Texto secundario/detalle gris */
+    --accent-color: #ff4500; /* Color de acento (para botones, precios) */
+    --button-bg: #8b0000; /* Fondo del botón Purchase (rojo oscuro) */
+    --button-bg-hover: #a00000;
+    --border-color: #333; /* Bordes y separadores */
+}
+body{
+  background-color: var(--bg-color-dark);
   padding: 0;
+  margin: 0;
 }
-.navbar{
+header{
+  height: 5rem;
   width: 100%;
-  height: 6rem;
-  display: flex;
-  justify-content: space-between;
+  padding: 5px 0 5px 0;
   position: fixed;
-  overflow: hidden;
-  background-color: none;
-  z-index: 1000;
-padding: 15px;
+  z-index: 300;
+  backdrop-filter: blur(5px);
 }
-/* Navbar: transparente por defecto, se vuelve vino cuando se añade .scrolled */
 .navbar{
-  background-color: transparent;
-  transition: background-color 0.5s ease, padding 0.8s ease;
-}
-.navbar.scrolled{
-  background-color: rgba(123,3,35,0.95); /* color vino */
-  box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .navbar-logo{
-  height: 100%;
-  width: auto;
-  padding-left: 25px;
+  height: 80%;
+  padding: 0 0 0 30px;
+  margin-left: 80px;
 }
-
+/* ocultar el botón burger en desktop; se muestra en media queries */
+.burger{ display: none; }
 .navbar-menu{
-  list-style: none;
   display: flex;
-  align-items: center;
-  height: 100%;
+  list-style: none;
 }
-
-.navbar-item{
-  margin: 0 20px;
-}
-.navbar-item a{
-  text-decoration: none;
+.navbar-item a {
   color: white;
-  font-size: 1.2rem;
-  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.5rem;
+  padding-right: 30px;
+  font-family: "Squada One", sans-serif;
 }
 .navbar-item a:hover{
-  color: rgb(0, 0, 0);
+  text-decoration: underline;
+  text-decoration-color: #ff4500;
+  color:gold
 }
-
 .card{
-  padding: 0px 100px 0 180px ;
-  background: linear-gradient(180deg, #7b0323, #2b000d, #000000);
+  display: grid;
+  grid-template-columns: 1fr;/* 1 columna */
+  grid-template-rows: auto auto auto auto;/* 3 filas (auto ajusta su altura al contenido) */
+  gap: 16px; /* espacio entre filas */
+  width: 100%;
   height: 100vh;
+  width: 100%;
+  position: relative;
+  background: linear-gradient(180deg, #7b0323, #2b000d, #000000);
+  
+}
+.card_title{
+  font-size: 2rem;
+  position: relative;
+  font-weight: bold;
+  color: white;
+  display: block;
+  width: 100%;
+
+}
+.palabra1{
+  display: block;
+  width:auto;
   position: absolute;
-}
-.card_title .palabra1{
-  position: relative;
-  font-family: "Squada One", sans-serif;
-  top: 150px;
+  left: 15vh;
+  top: 10vh;
+  z-index: 80;
+  font-family: 'Squada One';
   font-size: 10rem;
-  color: white;
 }
-.card_title .palabra2{
-  position: relative;
-  font-family: "Squada One", sans-serif;
-  font-size: 10rem;
-  top:380px;
-  text-align: end;
+.palabra2{
+  position: absolute;
+  top:45vh;
+  width: auto;
+  left: 50%;
+  padding: 0  0 0 20px;
+  z-index: 205;
   direction: rtl;
-  color: white;
-  z-index: 2;
+  font-family: 'Squada One';
+  font-size: 10rem;
 }
-
 .card-images{
+  display: flex;
+  height: 80vh;
   position: relative;
-  background-color: wheat;
-
+  align-items: center;
+  justify-content: center;
 }
 .card_image1{
+  height: 120%;
   position: absolute;
-  width: 500px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -20%);
+  margin: 0;
+  z-index: 100;
 }
 .card_image2{
+  height: 95%;
   position: absolute;
-  width: 300px;
-  top: 50px;
-  left: 450px;
-  transform: rotate(30deg);
-  transform-origin: center center;
-
+  z-index: 230;
+  transform: rotate(35deg);
 }
 .descripcion{
-  position: relative;
-  width: 40%;
-  top: 50%;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 15px;
+  width: 500px;
+  position: absolute;
+  top: 65%;
+  left: 100px;
 }
-.cartas{
-  position: relative;
-  display: flex;
-  flex-direction: column;
+.descripcion p{
+  font-size: 18px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #ffff;
 }
-
 .about{
-  position: relative;
-  top: 100vh;
-  background-image: url('../IMG/fondoB.jpg');
+  margin: 0;
+  height: 80vh;
+  background-color: #121212;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 80px 50px 50px 50px;
+  background-image: url(../IMG/fondoB.jpg);
   background-size: cover;
-  background-position: center;
-  min-height: 60vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 2rem;
-  padding: 5%;
-  align-items: center;
+  background-position: end;
+
+}
+.sobre_mi,
+.sobre_Mdz {
+    width: 45%; 
+    margin: 10px; 
+    height: auto;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-family: 'Squada One';
+    padding-bottom: 15px;
+
 }
 
-.sobre_mi{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  height: 80%;
-  border-radius: 25px;
-  backdrop-filter: blur(5px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
-}
-.sobre_Mdz{
-  backdrop-filter: blur(10px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  height: 80%;
-  border-radius: 25px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
-}
-.sobre_Mdz:hover, .sobre_mi:hover{
-  background-color: rgba(255, 255, 255, 0.1);
+.sobre_Mdz h2 {
+  text-align: center; 
+  margin-bottom: 5px;
+  font-size: 30px;
+
 }
 .sobre_mi h2{
-  font-family: "Squada One", sans-serif;
-  font-size: 5rem;
-  margin-bottom: 1rem;
+  text-align: center; 
+  margin-bottom: 15px;
+  font-size: 30px;
 }
-.sobre_mi, .sobre_Mdz p{
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.2rem;
-  padding: 0 2rem;
-  margin-bottom: 2rem;
-}
-
-.sobre_Mdz h2{
-  font-family: "Squada One", sans-serif;
-  font-size: 5rem;
-  margin-bottom: 1rem;
+.sobre_mi,
+.sobre_Mdz p {
+    font-size: 19px; 
+    line-height: 1.5; 
+    text-align: justify;
+    padding-bottom: 12px;
 }
 
-.redes{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1rem;
-  /* colocar .redes en la fila completa debajo de las dos columnas */
-  grid-column: 1 / -1;
-  padding-bottom: 50px;
+.sobre_mi:hover,
+.sobre_Mdz:hover {
+    border-color: rgba(255, 255, 255, 0.3); 
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); 
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+}
+/* Redes: Forzar a que ocupe todo el ancho y salte de línea */
+.redes {
+    flex-basis: 50%; 
+    text-align: center; 
+    padding-top: 20px;
+    text-decoration: none;
+}
+.redes a{
+    text-decoration: none;
 }
 .redes img {
-  width: 40px; /* ajustá según tu diseño */
-  height: auto;
-  filter: brightness(0) invert(1); /* convierte a blanco si son íconos oscuros */
-  transition: transform 0.3s ease;
+    margin: 0 15px; 
+    width: 40px;
+    filter: invert(100%);
 }
-
 .redes img:hover {
-  transform: scale(1.1); /* efecto sutil al pasar el mouse */
+    transform: scale(1.1);
+    transition: all 0.3s ease;
 }
-
 .formulario{
-  background-color: #ffffff;
-  position: relative;
-  height: 100vh;
-  top: 85vh;
+  background-image: url(/IMG/uvas_F.jpg);
+  background-size: cover;
+  height: 80vh;
+  padding: 50px;
   display: flex;
-  flex-direction: row;
-  background: linear-gradient(to bottom, #000000, #5c0a2b);
-  align-items: center;
-  justify-content: center;
 }
-.form{
-  backdrop-filter: blur(3px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 25px;
-  padding: 3rem;
-  width: 30%;
-  height: auto;
-  display:inline-flex;
-  flex-direction: column;
-  margin-right: 50px;
-  gap: 1rem;
-}
-input[type="text"], input[type="email"], textarea {
-  width: 95%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-}
-.form select{
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-}
-.form button {
-  padding: 10px;
-  width: 50%;
-  background-color: #7b0323;
+.textoform{
   color: white;
+  font-size: 20px;
+  margin-bottom: 20px;
+  flex: 2;
+  height: 80%;
+  padding: 50px 50px 0 0;
+} 
+.form{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  width: 20%;
+  height: 80%;
+  padding: 0 15px 0 15px;
+  border-radius: 20px;
+}
+.form:hover{
+  border-color: rgba(255, 255, 255, 0.3); 
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); 
+  transition: all 0.3s ease;
+  backdrop-filter: blur(3px);
+}
+.textoform h2{
+  font-size: 50px;
+  font-family: 'Squada One';
+}
+.form input, .form textarea{
+  width: 80%;
+  margin-bottom: 15px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-.form button:hover {
-  background-color: #5c0a2b;
 }
 .form label{
   color: white;
-  font-family: Arial, Helvetica, sans-serif;  
   font-size: 18px;
+  margin-bottom: 5px;
+  align-self: flex-start;
 }
-.textoform{
-  width: 40%;
-  padding: 30px;
-  margin: 0 0 0 60px;
+.form select{
+  width: 84%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
 }
-.textoform h2{
-  font-family: "Squada One", sans-serif;
-  font-size: 3rem;
+.form button{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
   color: white;
-  margin-bottom: 1rem;
-}
-.textoform p{
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.2rem;
-  color: white;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.footer {
-  top:80vh;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  background: linear-gradient(to bottom, #5c0a2b, #000000);
-  color: #fff;
-  padding: 2rem;
-  flex-wrap: wrap;
+/* ==========================
+   Mobile: navbar hamburguesa
+   ========================== */
+@media (max-width: 768px) {
+  .navbar-logo{
+    margin-left: 16px;
+    height: 56px;
+    padding-left: 0;
+  }
+  .burger{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-right: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1200;
+  }
+  .burger span,
+  .burger span::before,
+  .burger span::after{
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .burger span::before{ transform: translateY(-7px); }
+  .burger span::after{ transform: translateY(5px); }
+
+  /* ocultar menú horizontal */
+  .navbar-menu{ display: none; }
+
+  /* menu desplegable cuando nav.open */
+  .navbar.open .navbar-menu{
+    display: flex;
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, rgba(123,3,35,0.98), rgba(90,0,20,0.98));
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 0 24px 0;
+    gap: 8px;
+  }
+  .navbar.open .navbar-item a{
+    font-size: 1.4rem;
+    padding: 12px 24px;
+    display: block;
+  }
+
+  /* animar icono al abrir */
+  .navbar.open .burger span{ transform: rotate(45deg); }
+  .navbar.open .burger span::before{ transform: rotate(90deg) translate(0,0); }
+  .navbar.open .burger span::after{ opacity: 0; }
+
+  /* ajustar hero para móvil */
+  .card{
+    height: 100vh;
+    grid-template-rows: auto 1fr auto;
+  }
+  .palabra1, .palabra2{ font-size: 5rem; left: 8vw; }
+  .card_image1, .card_image2{ height: 60%; }
+  .descripcion{ position: static; width: auto; padding: 16px; top: auto; left: auto; }
+  .about{ padding: 40px 20px; }
+  .sobre_mi, .sobre_Mdz{ width: 100%; }
+  .redes{ flex-basis: 100%; padding-top: 12px; }
+  .form{ width: 90%; }
+}
+.form button:hover{
+  background-color: #555;
+  transition: all 0.3s ease;
+}
+/******************************************************************************
+*****************************************************************************/
+
+.t-catalogo{
+    text-align: center;
+    margin-top: 80px;
+    color: #fff;
+    font-family: 'Squada One';
+    font-size: 20px;
 }
 
-.footer-col {
-  padding: 20px 0 0 0;
-  flex: 1;
-  margin: 1rem;
-  min-width: 250px;
+/* Catálogo de Productos (Grid) */
+.product-catalog {
+    display: grid;
+    /* 3 columnas en pantallas grandes */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px; /* Ancho máximo similar al de la imagen */
+    margin: 0 auto;
+    background-color: var(--bg-color-dark);
 }
 
-.footer-col img {
-  height: 150px;
-  display: block;
-  margin: 0 auto;
-  filter: brightness(0) invert(1);
+/* Estilo de la Tarjeta de Producto */
+.product-card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
 }
 
-.footer-col h3 {
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-align: center;
+.product-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
-.footer-col ul {
-  list-style: none;
-  padding: 0;
+.product-name {
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--text-color-light);
 }
 
-.footer-col ul li {
-  margin-bottom: 0.5rem;
+.product-details {
+    display: block;
+    font-size: 0.8em;
+    color: var(--text-color-detail);
 }
 
-.footer-col ul li a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
+.product-content {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
 }
 
-.footer-col ul li a:hover {
-  color: #e0b0ff;
+.product-image {
+    /* Aquí se debe ajustar el tamaño de la imagen real */
+    width: 80px; 
+    height: auto;
+    object-fit: contain;
+    margin-right: 15px; /* Espacio entre imagen e info */
 }
 
-/* ========================================= */
-/* MEDIA QUERIES PARA RESPONSIVE       */
-/* ========================================= */
+.product-info {
+    flex-grow: 1;
+    font-size: 0.9em;
+}
 
-/* --- Tabletas y Dispositivos de Pantalla Mediana (Max-width: 992px) --- */
-@media (max-width: 992px) {
-  
-    /* --- CABECERA (Header/Navbar) --- */
-    .navbar{
-      width: 90%;
-      overflow: hidden;
-    }
-    .navbar-item a {
-        font-size: 1rem; /* Reducir tamaño de fuente */
-        margin: 0 10px;
-    }
-    .navbar-logo {
-        height: 80%;
-    }
+.product-info p {
+    margin: 3px 0;
+    color: var(--text-color-detail);
+}
 
-    /* --- SECCIÓN PRINCIPAL (Card) --- */
-    .card {
-        /* Reducir padding horizontal para ganar espacio */
-        padding: 0 50px;
-        padding-top: 80px;
-        width: 992px;
-        overflow: hidden;
-    }
-    .card_title .palabra1,
-    .card_title .palabra2 {
-        font-size: 7rem; /* Reducir tamaño del título */
-        text-align: center;
-    }
-    .card_title .palabra1 {
-        top: 100px;
-    }
-    .card_title .palabra2 {
-        top: 250px;
-    }
-    
-    /* Ajustar imágenes para que no se salgan del contenedor */
-    .card_image1 {
-        width: 400px;
-        transform: translate(-50%, -40%);
-    }
-    .card_image2 {
-        width: 250px;
-        transform: translate(-50%, -30%) rotate(30deg);
-    }
+/* Estilo de la sección de Precio y Controles */
+.product-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
 
-    .descripcion {
-        width: 45%; /* ancho al texto */
-        top: 45%;
-        font-size: 14px;
-    }
+.price-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--text-color-light);
+}
 
-    /* --- SECCIÓN ABOUT (Sobre Mí/Mendoza) --- */
-    .about {
-        height: auto; /* Dejar que el contenido defina la altura */
-        flex-direction: column; /* Apilar las dos columnas verticalmente */
-        padding: 5% 10%;
-        width: 900px;
-        overflow: hidden;
-    }
-    .sobre_mi, .sobre_Mdz {
-        height: auto;
-        width: 80%;
-        padding: 2rem 1rem;
-    }
-    .sobre_mi h2, .sobre_Mdz h2 {
-        font-size: 3.5rem; /* Reducir tamaño de títulos de About */
-    }
-    .sobre_mi p, .sobre_Mdz p {
-        font-size: 1.1rem;
-    }
+.purchase-controls {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+}
 
-    /* Ajustar posición de REDES (estaba muy abajo) */
-    .redes {
-        top: 90vh; /* Subirlo un poco */
-        padding: 50px;
-        height: auto;
-    }
+.control-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--text-color-light);
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1.1em;
+    line-height: 1;
+}
 
-    /* --- SECCIÓN FORMULARIO --- */
-    .formulario {
-        height: auto; /* Dejar que el contenido defina la altura */
-        flex-direction: column; /* Apilar texto y formulario */
-        padding: 50px 20px;
-        top: 90vh; /* Ajustar posición para que se vea después de About */
-        width: 992px;
-        overflow: hidden;
-    }
-    .textoform {
-        width: 80%; /* Más ancho */
-        margin: 0;
-        padding: 0 0 30px 0;
-        text-align: center;
-    }
-    .form {
-        width: 70%; /* Más ancho */
-        margin-right: 0;
-    }
+.quantity {
+    padding: 5px 10px;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+}
 
-    /* --- FOOTER --- */
-    .footer {
-        top: 90vh; /* Ajustar posición */
-        flex-direction: column; /* Apilar las columnas */
+/* Botón de Compra */
+.purchase-btn {
+    width: 100%;
+    background-color: var(--button-bg);
+    color: var(--text-color-light);
+    border: none;
+    padding: 10px 0;
+    margin-top: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.purchase-btn:hover {
+    background-color: var(--button-bg-hover);
+}
+
+.stock {
+    font-size: 0.75em;
+    color: var(--text-color-detail);
+    text-align: center;
+    margin-top: 5px !important; 
+}
+
+/* Iconos de acciones (Corazón, Carrito) */
+.product-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end; /* Alinear a la derecha como en la imagen */
+    border-top: 1px solid var(--border-color);
+    padding-top: 10px;
+    margin-top: 10px; 
+}
+
+.product-actions i {
+    font-size: 1.2em;
+    color: var(--text-color-detail);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.product-actions i:hover {
+    color: var(--accent-color);
+}
+
+
+/* Media Queries para diseño responsivo */
+@media (max-width: 900px) {
+    .product-catalog {
+        /* 2 columnas en pantallas medianas */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 600px) {
+    .product-catalog {
+        /* 1 columna en móviles */
+        grid-template-columns: 1fr; 
+    }
+    .product-content {
+        /* En móvil, el contenido se puede apilar verticalmente */
+        flex-direction: column;
         align-items: center;
         text-align: center;
     }
-    .footer-col {
-        min-width: 80%; /* Ocupar casi todo el ancho */
+    .product-image {
+        margin: 10px 0;
     }
-    .footer-col ul {
-        text-align: center;
+    .product-info p {
+        text-align: left; /* Para que la info se vea mejor centrada en la tarjeta */
     }
 }
 
-/* --- Móviles y Dispositivos Pequeños (Max-width: 600px) --- */
+/* Footer styles - tres columnas responsivas */
+.site-footer {
+    width: 100%;
+    background: linear-gradient(180deg, #0f0f0f 0%, #151515 100%);
+    color: var(--text-color-light);
+    padding: 40px 20px 20px;
+    box-sizing: border-box;
+    margin-top: 40px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+.footer-col {
+  padding: 10px;
+
+}
+.footer-logo-img {
+  width: 140px;
+  height: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+.footer-logo-img.invert {
+    /* Invierte colores para logos oscuros sobre fondo oscuro */
+    filter: invert(1) contrast(1.05) brightness(1.1);
+}
+.footer-tag {
+    color: var(--text-color-detail);
+    font-size: 0.95em;
+    margin-top: 6px;
+}
+.footer-redes h4,
+.footer-mapa h4 {
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+.social-icons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 8px 0 12px;
+}
+.social-link {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, background 0.15s;
+}
+.social-link:hover {
+    transform: translateY(-3px);
+    background: rgba(255,255,255,0.06);
+}
+.social-icon {
+    width: 22px;
+    height: 22px;
+    display: block;
+    filter: invert(1) hue-rotate(180deg) saturate(0%);
+}
+.footer-small {
+    color: var(--text-color-detail);
+    font-size: 0.9em;
+}
+.map-wrapper iframe {
+    width: 100%;
+    border: 0;
+    border-radius: 20px;
+}
+.map-text {
+    color: var(--text-color-detail);
+    font-size: 0.95em;
+    margin-bottom: 8px;
+}
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.04);
+    margin-top: 20px;
+    padding-top: 12px;
+    text-align: center;
+    color: var(--text-color-detail);
+    font-size: 0.9em;
+}
+
+/* Responsive footer: 2 columnas en tablet, 1 columna en móvil */
+@media (max-width: 900px) {
+    .footer-inner {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 @media (max-width: 600px) {
-    /* --- CABECERA (Header/Navbar) --- */
-    .navbar {
-        height: auto;
-        flex-direction: column; /* Apilar logo y menú */
-        background-color: #000000a0; /* Agregar un fondo para que el texto se lea */
-        margin-top: 0;
-        padding: 10px 0;
-        position: static; /* Cambiar a estático para que ocupe espacio y no esté fijo */
+    .footer-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
     }
-    .navbar-logo {
-        height: 50px;
-        padding: 0;
-        margin-bottom: 10px;
+    .footer-logo-img {
+        margin: 0 auto;
     }
-    .navbar-menu {
-        flex-wrap: wrap; /* Permitir que los ítems salten de línea */
+    .social-icons {
         justify-content: center;
-        height: auto;
     }
-    .navbar-item {
-        margin: 5px 10px;
-    }
-
-    /* --- SECCIÓN PRINCIPAL (Card) --- */
-    .card {
-        padding: 0 20px;
-        position: relative; /* Cambiar a relative para un flujo normal */
-        height: auto;
-        min-height: 80vh;
-    }
-    .card_title .palabra1,
-    .card_title .palabra2 {
-        position: static; /* Quitar posicionamiento absoluto */
-        font-size: 4rem;
-        text-align: center;
-        direction: ltr;
-        margin: 10px 0;
-    }
-    .card_title {
-        text-align: center;
-        padding-top: 50px; /* Separación después de la navbar */
-    }
-
-    /* Simplificar y centrar imágenes */
-    .card-images {
-        background-color: transparent;
-        height: 300px; /* Altura fija para el contenedor de las imágenes */
-    }
-    .card_image1, .card_image2 {
-        position: absolute;
-        width: 150px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(0deg); /* Centrar y quitar rotación */
-        opacity: 0.8; /* Suavizar la imagen de fondo si es necesario */
-    }
-    .card_image2 {
-        width: 200px;
-        transform: translate(-50%, -50%);
-        left: 55%; /* Ligeramente desplazada */
-        z-index: 5; /* Asegurar que la botella esté sobre el splash */
-    }
-    
-    .descripcion {
-        position: static; /* Quitar posicionamiento absoluto */
-        width: 100%;
-        margin-top: 280px; /* Espacio para que el texto aparezca debajo de las imágenes */
-        text-align: center;
-        padding: 10px 0;
-    }
-
-    /* --- SECCIÓN ABOUT (Sobre Mí/Mendoza) --- */
-    .about {
-        top: 0; /* Ya no necesitamos el desplazamiento de 100vh */
-        padding: 10% 5%;
-    }
-    .sobre_mi h2, .sobre_Mdz h2 {
-        font-size: 3rem;
-    }
-    .sobre_mi p, .sobre_Mdz p {
-        font-size: 1rem;
-    }
-    
-    /* Ajustar posición de REDES */
-    .redes {
-        top: 0; 
-        padding-top: 20px;
-    }
-
-    /* --- SECCIÓN FORMULARIO --- */
-    .formulario {
-        top: 0; /* Ya no necesitamos el desplazamiento de 85vh */
-        padding: 30px 10px;
-    }
-    .form {
-        width: 90%;
-        padding: 2rem;
-    }
-    .form button {
-        width: 100%; /* Botón al ancho completo */
-    }
-
-    /* --- FOOTER --- */
-    .footer {
-        top: 0; /* Ya no necesitamos el desplazamiento de 80vh */
-    }
-    .footer-col h3 {
-        font-size: 1.5rem;
+    .map-wrapper iframe {
+        height: 220px;
     }
 }
