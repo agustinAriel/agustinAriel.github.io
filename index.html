@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="IMG/logob.png">
     <link rel="stylesheet" href="CSS/style.css">
     <title>Uncorking Mendoza</title>
 </head>
@@ -11,6 +12,9 @@
     <header>
         <nav class="navbar">
             <img src="IMG/logob.png" class="navbar-logo" alt="Logo de Uncorking Mendoza">
+            <button class="burger" aria-label="Abrir menú" aria-expanded="false">
+                <span></span>
+            </button>
             <ul class="navbar-menu">
                 <li class="navbar-item"><a href="index.html">INICIO</a></li>
                 <li class="navbar-item"><a href="productos.html">PRODUCTOS</a></li>
@@ -36,8 +40,8 @@
             
         </section>
         <section >
-            <div class="about">
-                <div class="sobre_mi" id="sobre_mi">
+            <div class="about" id="sobre_mi">
+                <div class="sobre_mi" >
                     <h2>SOBRE MÍ</h2>
                     <p>Soy Ariel, creador de Uncorking Mendoza. Nací y crecí en esta tierra de vinos, donde cada copa cuenta una historia de sol, montaña y tradición. Mi pasión por la física, el diseño y la comunicación se entrelaza en este proyecto, que busca celebrar lo mejor de cada departamento vitivinícola mendocino.
                     Desde la tipografía hasta el tono de cada palabra, todo en este sitio está pensado para transmitir elegancia, claridad y calidez. Además de explorar el mundo del vino, trabajo en atención al cliente, donde aprendo cada día a escuchar con empatía y conectar con las personas.
@@ -50,7 +54,7 @@
                     Uncorking Mendoza nace de ese amor por lo local, por lo auténtico. Es una invitación a descubrir la diversidad de estilos, paisajes y sabores que hacen de Mendoza un lugar inolvidable.</p>
                 </div>
                  <div class="redes">
-                    <a href="https://www.facebook.com" target="_blank" >
+                    <a href="https://www.facebook.com" target="blank" >
                         <img src="IMG/001-instagram.png" alt="INSTAGRAM">
                     </a>
                     <a href="https://www.instagram.com" target="_blank">
@@ -62,15 +66,19 @@
                     <a href="https://www.twitter.com" target="_blank">
                         <img src="IMG/004-linkedin.png" alt="LINKEDIN">
                     </a>
-            </div>
+                </div>
             </div>
 
            
         </section>
         <section class="formulario">
             <div class="textoform">
-                <h2>Descubrí tu cepa mendocina</h2>
-                <p>Mendoza vibra en cada copa, en cada valle, en cada historia. Contanos quién sos y qué rincón de nuestra tierra te inspira. Así podremos acercarte contenidos, experiencias y sabores que resuenen con tu esencia.</p>
+                <h2>¡Contanos más sobre tus gustos!</h2>
+                <p>Mendoza es la tierra del sol y del buen vino, y cada uno de nuestros departamentos vitivinícolas tiene un carácter único. Para poder ofrecerte el texto complementario más relevante y ajustado a tus intereses, solo necesitamos saber un par de cosas.
+
+                Elegí tu departamento y cepa preferida en el formulario de abajo. Al completar esta breve selección, desbloquearemos información exclusiva sobre las características de esa región, las notas de cata típicas de esa cepa en ese terroir, ¡y mucho más!
+
+                No te lo pierdas! Tu elección nos ayudará a personalizar tu experiencia en Uncorking Mendoza. Completá el formulario ahora para descorchar todo el potencial de tu próximo vino.</p>
             </div>
             
             <form class="form">
@@ -122,30 +130,418 @@
                 
     </main>
 
-    <footer class="footer" id="contacto">
-        <div class="footer-col logo">
-            <img src="IMG/logo-UM.png" alt="Uncorking Mendoza">
+        <div class="t-catalogo">
+            <h1 class="catalogot">Catálogo</h1>
         </div>
 
-        <div class="footer-col contacto">
-            <h3>Contactanos</h3>
-            <ul>
-            <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
-            <li><a href="https://wa.me/5492610000000" target="_blank">WhatsApp</a></li>
-            <li><a href="mailto:uncorkingmendoza@gmail.com">Gmail</a></li>
-            <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
-            </ul>
-        </div>
+        <section class="product-catalog">
+            
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">San Rafael, "Yerevan"</span>
+                    <span class="product-details">Semi-dulce | 750 ml</span>
+                </div>
+                <div class="product-content">
+                    <img src="IMG/sanrafael.png" alt="Yerevan - Bodega San Rafael" class="product-image">
+                    <div class="product-info">
+                        <p>Productor: Bodega San Rafael</p>
+                        <p>Región: San Rafael, Mendoza</p>
+                        <p>Graduación alcohólica: 12% ABV</p>
+                        <div class="product-price">
+                            <span class="price-value">$18.000</span>
+                            <div class="purchase-controls">
+                                <button class="control-btn">-</button>
+                                <span class="quantity">1</span>
+                                <button class="control-btn">+</button>
+                            </div>
+                        </div>
+                        <button class="purchase-btn">Comprar</button>
+                        <p class="stock">Disponible en 63 vinotecas</p>
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
 
-        <div class="footer-col mapa">
-            <h3>Mendoza</h3>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53608.97862571926!2d-68.89971886650068!3d-32.88332844624492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e093ec45179bf%3A0x205a78f6d20efa3a!2sMendoza%2C%20Capital%2C%20Mendoza!5e0!3m2!1ses!2sar!4v1761080928778!5m2!1ses!2sar" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </footer>
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">Bodega Cordón, "365"</span>
+                    <span class="product-details">Semi-dulce | 750 ml</span>
+                </div>
+                <div class="product-content">
+                    <img src="IMG/generalalvear.png" alt="Bodega Cordón 365" class="product-image">
+                    <div class="product-info">
+                        <p>Productor: Bodega Cordón</p>
+                        <p>Región: Luján de Cuyo, Mendoza</p>
+                        <p>Graduación alcohólica: 12% ABV</p>
+                        <div class="product-price">
+                            <span class="price-value">$16.000</span>
+                            <div class="purchase-controls">
+                                <button class="control-btn">-</button>
+                                <span class="quantity">1</span>
+                                <button class="control-btn">+</button>
+                            </div>
+                        </div>
+                        <button class="purchase-btn">Comprar</button>
+                        <p class="stock">Disponible en 27 vinotecas</p>
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">Viñedos del Uco, "Meghri"</span>
+                    <span class="product-details">Semi-dulce | 750 ml</span>
+                </div>
+                <div class="product-content">
+                    <img src="IMG/malargue.png" alt="Viñedos del Uco Meghri" class="product-image">
+                    <div class="product-info">
+                        <p>Productor: Viñedos del Uco</p>
+                        <p>Región: Valle de Uco, Mendoza</p>
+                        <p>Graduación alcohólica: 13.5% ABV</p>
+                        <div class="product-price">
+                            <span class="price-value">$17.000</span>
+                            <div class="purchase-controls">
+                                <button class="control-btn">-</button>
+                                <span class="quantity">1</span>
+                                <button class="control-btn">+</button>
+                            </div>
+                        </div>
+                        <button class="purchase-btn">Comprar</button>
+                        <p class="stock">Disponible en 69 vinotecas</p>
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
 
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">Pomegranate wine "Armenia"</span>
+                    <span class="product-details">Semi-dulce | 750 ml</span>
+                </div>
+                <div class="product-content">
+                    <img src="IMG/tupungato.png" alt="Pomegranate Wine - Mendoza" class="product-image">
+                    <div class="product-info">
+                        <p>Productor: Bodega Armenia</p>
+                        <p>Región: Maipú, Mendoza</p>
+                        <p>Graduación alcohólica: 12% ABV</p>
+                        <div class="product-price">
+                            <span class="price-value">$11.000</span>
+                            <div class="purchase-controls">
+                                <button class="control-btn">-</button>
+                                <span class="quantity">1</span>
+                                <button class="control-btn">+</button>
+                            </div>
+                        </div>
+                        <button class="purchase-btn">Comprar</button>
+                        <p class="stock">Disponible en 53 vinotecas</p>
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
 
-</body>
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">Rincón de los Andes, "70 Años"</span>
+                    <span class="product-details">Dulce | 750 ml</span>
+                </div>
+                <div class="product-content">
+                    <img src="IMG/tunuyan.png" alt="Rincón de los Andes 70 Años" class="product-image">
+                    <div class="product-info">
+                        <p>Productor: Rincón de los Andes</p>
+                        <p>Región: Valle de Uco, Mendoza</p>
+                        <p>Graduación alcohólica: 16.5% ABV</p>
+                        <div class="product-price">
+                            <span class="price-value">$84.000</span>
+                            <div class="purchase-controls">
+                                <button class="control-btn">-</button>
+                                <span class="quantity">1</span>
+                                <button class="control-btn">+</button>
+                            </div>
+                        </div>
+                        <button class="purchase-btn">Comprar</button>
+                        <p class="stock">Disponible en 42 vinotecas</p>
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">Pomegranate wine "Nar"</span>
+                    <span class="product-details">Semi-dulce | 750 ml</span>
+                </div>
+                <div class="product-content">
+                    <img src="IMG/capital.png" alt="Pomegranate Wine Nar - Mendoza" class="product-image">
+                    <div class="product-info">
+                        <p>Productor: Bodega Nar</p>
+                        <p>Región: Luján de Cuyo, Mendoza</p>
+                        <p>Graduación alcohólica: 13% ABV</p>
+                        <div class="product-price">
+                            <span class="price-value">$21.000</span>
+                            <div class="purchase-controls">
+                                <button class="control-btn">-</button>
+                                <span class="quantity">1</span>
+                                <button class="control-btn">+</button>
+                            </div>
+                        </div>
+                        <button class="purchase-btn">Comprar</button>
+                        <p class="stock">Disponible en 85 vinotecas</p>
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">San Rafael, "Yerevan"</span>
+                    <span class="product-details">Semi-dulce | 750 ml</span>
+                </div>
+                <div class="product-content">
+                    <img src="IMG/sanrafael.png" alt="Yerevan - Bodega San Rafael" class="product-image">
+                    <div class="product-info">
+                        <p>Productor: Bodega San Rafael</p>
+                        <p>Región: San Rafael, Mendoza</p>
+                        <p>Graduación alcohólica: 12% ABV</p>
+                        <div class="product-price">
+                            <span class="price-value">$18.000</span>
+                            <div class="purchase-controls">
+                                <button class="control-btn">-</button>
+                                <span class="quantity">1</span>
+                                <button class="control-btn">+</button>
+                            </div>
+                        </div>
+                        <button class="purchase-btn">Comprar</button>
+                        <p class="stock">Disponible en 63 vinotecas</p>
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">Bodega Cordón, "365"</span>
+                    <span class="product-details">Semi-dulce | 750 ml</span>
+                </div>
+                <div class="product-content">
+                    <img src="IMG/generalalvear.png" alt="Bodega Cordón 365" class="product-image">
+                    <div class="product-info">
+                        <p>Productor: Bodega Cordón</p>
+                        <p>Región: Luján de Cuyo, Mendoza</p>
+                        <p>Graduación alcohólica: 12% ABV</p>
+                        <div class="product-price">
+                            <span class="price-value">$16.000</span>
+                            <div class="purchase-controls">
+                                <button class="control-btn">-</button>
+                                <span class="quantity">1</span>
+                                <button class="control-btn">+</button>
+                            </div>
+                        </div>
+                        <button class="purchase-btn">Comprar</button>
+                        <p class="stock">Disponible en 27 vinotecas</p>
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">Viñedos del Uco, "Meghri"</span>
+                    <span class="product-details">Semi-dulce | 750 ml</span>
+                </div>
+                <div class="product-content">
+                    <img src="IMG/malargue.png" alt="Viñedos del Uco Meghri" class="product-image">
+                    <div class="product-info">
+                        <p>Productor: Viñedos del Uco</p>
+                        <p>Región: Valle de Uco, Mendoza</p>
+                        <p>Graduación alcohólica: 13.5% ABV</p>
+                        <div class="product-price">
+                            <span class="price-value">$17.000</span>
+                            <div class="purchase-controls">
+                                <button class="control-btn">-</button>
+                                <span class="quantity">1</span>
+                                <button class="control-btn">+</button>
+                            </div>
+                        </div>
+                        <button class="purchase-btn">Comprar</button>
+                        <p class="stock">Disponible en 69 vinotecas</p>
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">Pomegranate wine "Armenia"</span>
+                    <span class="product-details">Semi-dulce | 750 ml</span>
+                </div>
+                <div class="product-content">
+                    <img src="IMG/malargue.png" alt="Pomegranate Wine - Mendoza" class="product-image">
+                    <div class="product-info">
+                        <p>Productor: Bodega Armenia</p>
+                        <p>Región: Maipú, Mendoza</p>
+                        <p>Graduación alcohólica: 12% ABV</p>
+                        <div class="product-price">
+                            <span class="price-value">$11.000</span>
+                            <div class="purchase-controls">
+                                <button class="control-btn">-</button>
+                                <span class="quantity">1</span>
+                                <button class="control-btn">+</button>
+                            </div>
+                        </div>
+                        <button class="purchase-btn">Comprar</button>
+                        <p class="stock">Disponible en 53 vinotecas</p>
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">Rincón de los Andes, "70 Años"</span>
+                    <span class="product-details">Dulce | 750 ml</span>
+                </div>
+                <div class="product-content">
+                    <img src="IMG/godoycruz.png" alt="Rincón de los Andes 70 Años" class="product-image">
+                    <div class="product-info">
+                        <p>Productor: Rincón de los Andes</p>
+                        <p>Región: Valle de Uco, Mendoza</p>
+                        <p>Graduación alcohólica: 16.5% ABV</p>
+                        <div class="product-price">
+                            <span class="price-value">$84.000</span>
+                            <div class="purchase-controls">
+                                <button class="control-btn">-</button>
+                                <span class="quantity">1</span>
+                                <button class="control-btn">+</button>
+                            </div>
+                        </div>
+                        <button class="purchase-btn">Comprar</button>
+                        <p class="stock">Disponible en 42 vinotecas</p>
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="product-name">Pomegranate wine "Nar"</span>
+                    <span class="product-details">Semi-dulce | 750 ml</span>
+                </div>
+                <div class="product-content">
+                    <img src="IMG/sanrafael.png" alt="Pomegranate Wine Nar - Mendoza" class="product-image">
+                    <div class="product-info">
+                        <p>Productor: Bodega Nar</p>
+                        <p>Región: Luján de Cuyo, Mendoza</p>
+                        <p>Graduación alcohólica: 13% ABV</p>
+                        <div class="product-price">
+                            <span class="price-value">$21.000</span>
+                            <div class="purchase-controls">
+                                <button class="control-btn">-</button>
+                                <span class="quantity">1</span>
+                                <button class="control-btn">+</button>
+                            </div>
+                        </div>
+                        <button class="purchase-btn">Comprar</button>
+                        <p class="stock">Disponible en 85 vinotecas</p>
+                    </div>
+                </div>
+                <div class="product-actions">
+                    <i class="fa-regular fa-heart"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
+
+        </section>
+
+        <footer class="site-footer" id="contacto">
+            <div class="footer-inner">
+                <div class="footer-col footer-logo">
+                    <img src="IMG/logob.png" alt="Uncorking Mendoza" class="footer-logo-img">
+                    <p class="footer-tag">Celebramos los sabores de Mendoza: vinos y tradición.</p>
+                </div>
+
+                <div class="footer-col footer-redes">
+                    <h4>Síguenos</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com" target="_blank" aria-label="Instagram" class="social-link">
+                            <img src="IMG/002-whatsapp.png" alt="Instagram" class="social-icon">
+                        </a>
+                        <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" class="social-link">
+                            <img src="IMG/001-instagram.png" alt="Facebook" class="social-icon">
+                        </a>
+                        <a href="https://wa.me/5492610000000" target="_blank" aria-label="WhatsApp" class="social-link">
+                            <img src="IMG/004-linkedin.png" alt="WhatsApp" class="social-icon">
+                        </a>
+                        <a href="mailto:uncorkingmendoza@gmail.com" aria-label="Email" class="social-link">
+                            <img src="IMG/003-gmail.png" alt="Email" class="social-icon">
+                        </a>
+                    </div>
+                    <p class="footer-small">Conéctate con nosotros para novedades y ofertas.</p>
+                </div>
+
+                <div class="footer-col footer-mapa">
+                    <h4>Nuestra ubicación</h4>
+                    <p class="map-text">Basados en Mendoza, trabajamos con productores locales de Luján de Cuyo, Valle de Uco y San Rafael.</p>
+                    <div class="map-wrapper">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53608.97862571926!2d-68.89971886650068!3d-32.88332844624492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e093ec45179bf%3A0x205a78f6d20efa3a!2sMendoza%2C%20Capital%2C%20Mendoza!5e0!3m2!1ses!2sar!4v1761080928778!5m2!1ses!2sar" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© <span id="year-footer"></span> Uncorking Mendoza. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+
+    </body>
     <script>
+        (function(){
+        const nav = document.querySelector('.navbar');
+        if(nav){
+            const threshold = window.innerHeight * 0.10; // 10vh
+            function checkScroll(){
+                if(window.scrollY > threshold) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            }
+            window.addEventListener('scroll', checkScroll, {passive:true});
+            checkScroll();
+        }
+        const y = document.getElementById('year-footer');
+        if(y) y.textContent = new Date().getFullYear();
+    })();
         (function(){
             const nav = document.querySelector('.navbar');
             if(!nav) return;
@@ -159,4 +555,23 @@
             checkScroll();
         })();
     </script>
+<script>
+    (function(){
+        // hamburguesa menú
+        const nav = document.querySelector('.navbar');
+        const burger = document.querySelector('.burger');
+        const menu = document.querySelector('.navbar-menu');
+        if(burger && nav){
+            burger.addEventListener('click', ()=>{
+                const opened = nav.classList.toggle('open');
+                burger.setAttribute('aria-expanded', opened ? 'true' : 'false');
+            });
+            // cerrar al clicar un enlace
+            menu?.querySelectorAll('a')?.forEach(a=> a.addEventListener('click', ()=>{
+                nav.classList.remove('open');
+                burger.setAttribute('aria-expanded','false');
+            }));
+        }
+    })();
+</script>
 </html>
