@@ -273,8 +273,11 @@ header{
    Mobile: navbar hamburguesa
    ========================== */
 @media (max-width: 768px) {
+  .navbar{
+    width: 90%;
+  }
   .navbar-logo{
-    margin-left: 16px;
+    margin-left: 15px;
     height: 56px;
     padding-left: 0;
   }
@@ -335,14 +338,47 @@ header{
     height: 100vh;
     grid-template-rows: auto 1fr auto;
   }
-  .palabra1, .palabra2{ font-size: 5rem; left: 8vw; }
-  .card_image1, .card_image2{ height: 60%; }
-  .descripcion{ position: static; width: auto; padding: 16px; top: auto; left: auto; }
-  .about{ padding: 40px 20px; }
+   .palabra1{
+    top: 20vh;
+    z-index: 105;
+    font-size: 5.5rem; 
+    left: 25px;
+   }  
+   .palabra2{
+    top: 60vh;
+    font-size: 5.5rem; 
+    left: 25px;
+    z-index: 305;
+   }
+   .card-images{
+    height: auto;
+   }
+  .card_image1, .card_image2{ 
+    height: 60%; 
+  }
+  .descripcion{ 
+  position: static;
+  width: auto; 
+  padding: 16px; 
+  left: auto;}
+ }
+  .about{ 
+    height: auto;
+    padding: 40px 20px; 
+  }
   .sobre_mi, .sobre_Mdz{ width: 100%; }
-  .redes{ flex-basis: 100%; padding-top: 12px; }
-  .form{ width: 90%; }
-}
+  .redes{ 
+    flex-basis: 100%; 
+    padding-top: 12px; }
+  .formulario{ 
+    flex-direction: column; 
+    height: auto; 
+    padding: 20px; }
+  .form{ 
+    width: 90%; 
+    height: auto; 
+    margin:20px 0 25px 0; }
+
 .form button:hover{
   background-color: #555;
   transition: all 0.3s ease;
