@@ -32,16 +32,16 @@
             </h1>
             <div class="card-images">
                 <img src="IMG/Wine-splash.png" class="card_image1" alt="Logo de Uncorking Mendoza">
-                 <img src="IMG/winw-Mendoza.png" class="card_image2" alt="Una botella de vino de mendoza">
+                <img src="IMG/winw-Mendoza.png" class="card_image2" alt="Una botella de vino de mendoza">
             </div>
             <div class="descripcion">
-                <p class="card_description">Descubri la esensia de Mendoza, copa a copa. En Uncorking Mendoza celebramos los vinos más destacados de cada departamento de la provincia, explorando sus perfiles únicos, sus terroirs, singularidades y las historias que los hacen inolvidables.</p>
+                <p class="card_description">Descubrí la esencia de Mendoza, copa a copa. En Uncorking Mendoza celebramos los vinos más destacados de cada departamento de la provincia, explorando sus perfiles únicos, sus terroirs, singularidades y las historias que los hacen inolvidables.</p>
             </div>
-            
         </section>
-        <section >
+
+        <section class="about-us-section">
             <div class="about" id="sobre_mi">
-                <div class="sobre_mi" >
+                <div class="sobre_mi">
                     <h2>SOBRE MÍ</h2>
                     <p>Soy Ariel, creador de Uncorking Mendoza. Nací y crecí en esta tierra de vinos, donde cada copa cuenta una historia de sol, montaña y tradición. Mi pasión por la física, el diseño y la comunicación se entrelaza en este proyecto, que busca celebrar lo mejor de cada departamento vitivinícola mendocino.
                     Desde la tipografía hasta el tono de cada palabra, todo en este sitio está pensado para transmitir elegancia, claridad y calidez. Además de explorar el mundo del vino, trabajo en atención al cliente, donde aprendo cada día a escuchar con empatía y conectar con las personas.
@@ -53,31 +53,29 @@
                     Aquí, el Malbec encontró su hogar. Y con él, una cultura que celebra el encuentro, la tierra y el tiempo. Cada departamento vitivinícola —de Luján de Cuyo a San Rafael, de Maipú a Tupungato— aporta su carácter único, su clima, su suelo, su alma.
                     Uncorking Mendoza nace de ese amor por lo local, por lo auténtico. Es una invitación a descubrir la diversidad de estilos, paisajes y sabores que hacen de Mendoza un lugar inolvidable.</p>
                 </div>
-                 <div class="redes">
-                    <a href="https://www.facebook.com" target="blank" >
-                        <img src="IMG/001-instagram.png" alt="INSTAGRAM">
+                
+                <div class="redes">
+                    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+                        <img src="IMG/001-instagram.png" alt="Instagram">
                     </a>
-                    <a href="https://www.instagram.com" target="_blank">
-                        <img src="IMG/002-whatsapp.png" alt="WHATSAPP">
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                        <img src="IMG/002-whatsapp.png" alt="Whatsapp">
                     </a>
-                    <a href="https://www.twitter.com" target="_blank">
-                        <img src="IMG/003-gmail.png" alt="GMAIL">
+                    <a href="https://www.twitter.com" target="_blank" aria-label="Twitter">
+                        <img src="IMG/003-gmail.png" alt="Gmail">
                     </a>
-                    <a href="https://www.twitter.com" target="_blank">
-                        <img src="IMG/004-linkedin.png" alt="LINKEDIN">
+                    <a href="https://www.twitter.com" target="_blank" aria-label="LinkedIn">
+                        <img src="IMG/004-linkedin.png" alt="LinkedIn">
                     </a>
                 </div>
             </div>
-
-           
         </section>
+
         <section class="formulario">
             <div class="textoform">
                 <h2>¡Contanos más sobre tus gustos!</h2>
                 <p>Mendoza es la tierra del sol y del buen vino, y cada uno de nuestros departamentos vitivinícolas tiene un carácter único. Para poder ofrecerte el texto complementario más relevante y ajustado a tus intereses, solo necesitamos saber un par de cosas.
-
                 Elegí tu departamento y cepa preferida en el formulario de abajo. Al completar esta breve selección, desbloquearemos información exclusiva sobre las características de esa región, las notas de cata típicas de esa cepa en ese terroir, ¡y mucho más!
-
                 No te lo pierdas! Tu elección nos ayudará a personalizar tu experiencia en Uncorking Mendoza. Completá el formulario ahora para descorchar todo el potencial de tu próximo vino.</p>
             </div>
             
@@ -109,8 +107,9 @@
                     <option value="launion">La Unión</option>
                     <option value="santarosa">Santa Rosa</option>
                 </select>
+
                 <label for="cepa">¿Cuál es tu cepa favorita?</label>
-                    <select id="cepa" name="cepa">
+                <select id="cepa" name="cepa">
                     <option value="malbec">Malbec</option>
                     <option value="cabernet">Cabernet Sauvignon</option>
                     <option value="bonarda">Bonarda</option>
@@ -121,14 +120,11 @@
                     <option value="sauvignon">Sauvignon Blanc</option>
                     <option value="pedro">Pedro Giménez</option>
                     <option value="moscatel">Moscatel de Alejandría</option>
-                    </select>
-
+                </select>
 
                 <button type="submit">Enviar</button>
             </form>
         </section>
-                
-    </main>
 
         <div class="t-catalogo">
             <h1 class="catalogot">Catálogo</h1>
@@ -150,9 +146,9 @@
                         <div class="product-price">
                             <span class="price-value">$18.000</span>
                             <div class="purchase-controls">
-                                <button class="control-btn">-</button>
+                                <button class="control-btn" aria-label="Disminuir cantidad">-</button>
                                 <span class="quantity">1</span>
-                                <button class="control-btn">+</button>
+                                <button class="control-btn" aria-label="Aumentar cantidad">+</button>
                             </div>
                         </div>
                         <button class="purchase-btn">Comprar</button>
@@ -160,8 +156,8 @@
                     </div>
                 </div>
                 <div class="product-actions">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-regular fa-heart" aria-label="Añadir a favoritos"></i>
+                    <i class="fa-solid fa-cart-shopping" aria-label="Añadir al carrito"></i>
                 </div>
             </div>
 
@@ -179,9 +175,9 @@
                         <div class="product-price">
                             <span class="price-value">$16.000</span>
                             <div class="purchase-controls">
-                                <button class="control-btn">-</button>
+                                <button class="control-btn" aria-label="Disminuir cantidad">-</button>
                                 <span class="quantity">1</span>
-                                <button class="control-btn">+</button>
+                                <button class="control-btn" aria-label="Aumentar cantidad">+</button>
                             </div>
                         </div>
                         <button class="purchase-btn">Comprar</button>
@@ -189,8 +185,8 @@
                     </div>
                 </div>
                 <div class="product-actions">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-regular fa-heart" aria-label="Añadir a favoritos"></i>
+                    <i class="fa-solid fa-cart-shopping" aria-label="Añadir al carrito"></i>
                 </div>
             </div>
             
@@ -208,9 +204,9 @@
                         <div class="product-price">
                             <span class="price-value">$17.000</span>
                             <div class="purchase-controls">
-                                <button class="control-btn">-</button>
+                                <button class="control-btn" aria-label="Disminuir cantidad">-</button>
                                 <span class="quantity">1</span>
-                                <button class="control-btn">+</button>
+                                <button class="control-btn" aria-label="Aumentar cantidad">+</button>
                             </div>
                         </div>
                         <button class="purchase-btn">Comprar</button>
@@ -218,8 +214,8 @@
                     </div>
                 </div>
                 <div class="product-actions">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-regular fa-heart" aria-label="Añadir a favoritos"></i>
+                    <i class="fa-solid fa-cart-shopping" aria-label="Añadir al carrito"></i>
                 </div>
             </div>
 
@@ -237,9 +233,9 @@
                         <div class="product-price">
                             <span class="price-value">$11.000</span>
                             <div class="purchase-controls">
-                                <button class="control-btn">-</button>
+                                <button class="control-btn" aria-label="Disminuir cantidad">-</button>
                                 <span class="quantity">1</span>
-                                <button class="control-btn">+</button>
+                                <button class="control-btn" aria-label="Aumentar cantidad">+</button>
                             </div>
                         </div>
                         <button class="purchase-btn">Comprar</button>
@@ -247,8 +243,8 @@
                     </div>
                 </div>
                 <div class="product-actions">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-regular fa-heart" aria-label="Añadir a favoritos"></i>
+                    <i class="fa-solid fa-cart-shopping" aria-label="Añadir al carrito"></i>
                 </div>
             </div>
 
@@ -266,9 +262,9 @@
                         <div class="product-price">
                             <span class="price-value">$84.000</span>
                             <div class="purchase-controls">
-                                <button class="control-btn">-</button>
+                                <button class="control-btn" aria-label="Disminuir cantidad">-</button>
                                 <span class="quantity">1</span>
-                                <button class="control-btn">+</button>
+                                <button class="control-btn" aria-label="Aumentar cantidad">+</button>
                             </div>
                         </div>
                         <button class="purchase-btn">Comprar</button>
@@ -276,8 +272,8 @@
                     </div>
                 </div>
                 <div class="product-actions">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-regular fa-heart" aria-label="Añadir a favoritos"></i>
+                    <i class="fa-solid fa-cart-shopping" aria-label="Añadir al carrito"></i>
                 </div>
             </div>
 
@@ -295,9 +291,9 @@
                         <div class="product-price">
                             <span class="price-value">$21.000</span>
                             <div class="purchase-controls">
-                                <button class="control-btn">-</button>
+                                <button class="control-btn" aria-label="Disminuir cantidad">-</button>
                                 <span class="quantity">1</span>
-                                <button class="control-btn">+</button>
+                                <button class="control-btn" aria-label="Aumentar cantidad">+</button>
                             </div>
                         </div>
                         <button class="purchase-btn">Comprar</button>
@@ -305,11 +301,11 @@
                     </div>
                 </div>
                 <div class="product-actions">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-regular fa-heart" aria-label="Añadir a favoritos"></i>
+                    <i class="fa-solid fa-cart-shopping" aria-label="Añadir al carrito"></i>
                 </div>
             </div>
-
+            
             <div class="product-card">
                 <div class="product-header">
                     <span class="product-name">San Rafael, "Yerevan"</span>
@@ -324,9 +320,9 @@
                         <div class="product-price">
                             <span class="price-value">$18.000</span>
                             <div class="purchase-controls">
-                                <button class="control-btn">-</button>
+                                <button class="control-btn" aria-label="Disminuir cantidad">-</button>
                                 <span class="quantity">1</span>
-                                <button class="control-btn">+</button>
+                                <button class="control-btn" aria-label="Aumentar cantidad">+</button>
                             </div>
                         </div>
                         <button class="purchase-btn">Comprar</button>
@@ -334,8 +330,8 @@
                     </div>
                 </div>
                 <div class="product-actions">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-regular fa-heart" aria-label="Añadir a favoritos"></i>
+                    <i class="fa-solid fa-cart-shopping" aria-label="Añadir al carrito"></i>
                 </div>
             </div>
 
@@ -353,9 +349,9 @@
                         <div class="product-price">
                             <span class="price-value">$16.000</span>
                             <div class="purchase-controls">
-                                <button class="control-btn">-</button>
+                                <button class="control-btn" aria-label="Disminuir cantidad">-</button>
                                 <span class="quantity">1</span>
-                                <button class="control-btn">+</button>
+                                <button class="control-btn" aria-label="Aumentar cantidad">+</button>
                             </div>
                         </div>
                         <button class="purchase-btn">Comprar</button>
@@ -363,8 +359,8 @@
                     </div>
                 </div>
                 <div class="product-actions">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-regular fa-heart" aria-label="Añadir a favoritos"></i>
+                    <i class="fa-solid fa-cart-shopping" aria-label="Añadir al carrito"></i>
                 </div>
             </div>
             
@@ -382,9 +378,9 @@
                         <div class="product-price">
                             <span class="price-value">$17.000</span>
                             <div class="purchase-controls">
-                                <button class="control-btn">-</button>
+                                <button class="control-btn" aria-label="Disminuir cantidad">-</button>
                                 <span class="quantity">1</span>
-                                <button class="control-btn">+</button>
+                                <button class="control-btn" aria-label="Aumentar cantidad">+</button>
                             </div>
                         </div>
                         <button class="purchase-btn">Comprar</button>
@@ -392,8 +388,8 @@
                     </div>
                 </div>
                 <div class="product-actions">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-regular fa-heart" aria-label="Añadir a favoritos"></i>
+                    <i class="fa-solid fa-cart-shopping" aria-label="Añadir al carrito"></i>
                 </div>
             </div>
 
@@ -411,9 +407,9 @@
                         <div class="product-price">
                             <span class="price-value">$11.000</span>
                             <div class="purchase-controls">
-                                <button class="control-btn">-</button>
+                                <button class="control-btn" aria-label="Disminuir cantidad">-</button>
                                 <span class="quantity">1</span>
-                                <button class="control-btn">+</button>
+                                <button class="control-btn" aria-label="Aumentar cantidad">+</button>
                             </div>
                         </div>
                         <button class="purchase-btn">Comprar</button>
@@ -421,8 +417,8 @@
                     </div>
                 </div>
                 <div class="product-actions">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-regular fa-heart" aria-label="Añadir a favoritos"></i>
+                    <i class="fa-solid fa-cart-shopping" aria-label="Añadir al carrito"></i>
                 </div>
             </div>
 
@@ -440,9 +436,9 @@
                         <div class="product-price">
                             <span class="price-value">$84.000</span>
                             <div class="purchase-controls">
-                                <button class="control-btn">-</button>
+                                <button class="control-btn" aria-label="Disminuir cantidad">-</button>
                                 <span class="quantity">1</span>
-                                <button class="control-btn">+</button>
+                                <button class="control-btn" aria-label="Aumentar cantidad">+</button>
                             </div>
                         </div>
                         <button class="purchase-btn">Comprar</button>
@@ -450,8 +446,8 @@
                     </div>
                 </div>
                 <div class="product-actions">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-regular fa-heart" aria-label="Añadir a favoritos"></i>
+                    <i class="fa-solid fa-cart-shopping" aria-label="Añadir al carrito"></i>
                 </div>
             </div>
 
@@ -469,9 +465,9 @@
                         <div class="product-price">
                             <span class="price-value">$21.000</span>
                             <div class="purchase-controls">
-                                <button class="control-btn">-</button>
+                                <button class="control-btn" aria-label="Disminuir cantidad">-</button>
                                 <span class="quantity">1</span>
-                                <button class="control-btn">+</button>
+                                <button class="control-btn" aria-label="Aumentar cantidad">+</button>
                             </div>
                         </div>
                         <button class="purchase-btn">Comprar</button>
@@ -479,8 +475,8 @@
                     </div>
                 </div>
                 <div class="product-actions">
-                    <i class="fa-regular fa-heart"></i>
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-regular fa-heart" aria-label="Añadir a favoritos"></i>
+                    <i class="fa-solid fa-cart-shopping" aria-label="Añadir al carrito"></i>
                 </div>
             </div>
 
@@ -497,16 +493,16 @@
                     <h4>Síguenos</h4>
                     <div class="social-icons">
                         <a href="https://www.instagram.com" target="_blank" aria-label="Instagram" class="social-link">
-                            <img src="IMG/002-whatsapp.png" alt="Instagram" class="social-icon">
+                            <img src="IMG/002-whatsapp.png" alt="Instagram Icono" class="social-icon">
                         </a>
                         <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" class="social-link">
-                            <img src="IMG/001-instagram.png" alt="Facebook" class="social-icon">
+                            <img src="IMG/001-instagram.png" alt="Facebook Icono" class="social-icon">
                         </a>
                         <a href="https://wa.me/5492610000000" target="_blank" aria-label="WhatsApp" class="social-link">
-                            <img src="IMG/004-linkedin.png" alt="WhatsApp" class="social-icon">
+                            <img src="IMG/004-linkedin.png" alt="WhatsApp Icono" class="social-icon">
                         </a>
                         <a href="mailto:uncorkingmendoza@gmail.com" aria-label="Email" class="social-link">
-                            <img src="IMG/003-gmail.png" alt="Email" class="social-icon">
+                            <img src="IMG/003-gmail.png" alt="Email Icono" class="social-icon">
                         </a>
                     </div>
                     <p class="footer-small">Conéctate con nosotros para novedades y ofertas.</p>
@@ -516,7 +512,7 @@
                     <h4>Nuestra ubicación</h4>
                     <p class="map-text">Basados en Mendoza, trabajamos con productores locales de Luján de Cuyo, Valle de Uco y San Rafael.</p>
                     <div class="map-wrapper">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53608.97862571926!2d-68.89971886650068!3d-32.88332844624492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e093ec45179bf%3A0x205a78f6d20efa3a!2sMendoza%2C%20Capital%2C%20Mendoza!5e0!3m2!1ses!2sar!4v1761080928778!5m2!1ses!2sar" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53608.97862571926!2d-68.89971886650068!3d-32.88332844624492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e093ec45179bf%3A0x205a78f6d20efa3a!2sMendoza%2C%20Capital%2C%20Mendoza!5e0!3m2!1ses!2sar!4v1761080928778!5m2!1ses!2sar" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de ubicación en Mendoza"></iframe>
                     </div>
                 </div>
             </div>
@@ -525,53 +521,8 @@
                 <p>© <span id="year-footer"></span> Uncorking Mendoza. Todos los derechos reservados.</p>
             </div>
         </footer>
+    </main>
 
-    </body>
-    <script>
-        (function(){
-        const nav = document.querySelector('.navbar');
-        if(nav){
-            const threshold = window.innerHeight * 0.10; // 10vh
-            function checkScroll(){
-                if(window.scrollY > threshold) nav.classList.add('scrolled');
-                else nav.classList.remove('scrolled');
-            }
-            window.addEventListener('scroll', checkScroll, {passive:true});
-            checkScroll();
-        }
-        const y = document.getElementById('year-footer');
-        if(y) y.textContent = new Date().getFullYear();
-    })();
-        (function(){
-            const nav = document.querySelector('.navbar');
-            if(!nav) return;
-            const threshold = window.innerHeight * 0.10; // 10vh
-            function checkScroll(){
-                if(window.scrollY > threshold) nav.classList.add('scrolled');
-                else nav.classList.remove('scrolled');
-            }
-            window.addEventListener('scroll', checkScroll, {passive:true});
-            // comprobar al cargar
-            checkScroll();
-        })();
-    </script>
-<script>
-    (function(){
-        // hamburguesa menú
-        const nav = document.querySelector('.navbar');
-        const burger = document.querySelector('.burger');
-        const menu = document.querySelector('.navbar-menu');
-        if(burger && nav){
-            burger.addEventListener('click', ()=>{
-                const opened = nav.classList.toggle('open');
-                burger.setAttribute('aria-expanded', opened ? 'true' : 'false');
-            });
-            // cerrar al clicar un enlace
-            menu?.querySelectorAll('a')?.forEach(a=> a.addEventListener('click', ()=>{
-                nav.classList.remove('open');
-                burger.setAttribute('aria-expanded','false');
-            }));
-        }
-    })();
-</script>
+    <script src="js/script.js" defer></script> 
+</body>
 </html>
