@@ -236,7 +236,7 @@ header {
 }
 
 /* =========================================================
-   6. FORMULARIO (CORRECCIÓN A 2 COLUMNAS)
+   6. FORMULARIO 
    ========================================================= */
 
 .formulario {
@@ -245,16 +245,18 @@ header {
     justify-content: space-between;
     align-items: flex-start;
     gap: 2rem;
-    background-color: blue; /* Debug colors */
+    background-image: url(/IMG/uvas_F.jpg);
+    background-size: cover;
     padding: 80px 50px;
 }
 
 .textoform {
     flex: 1;
     max-width: 50%;
-    background-color: red; /* Debug color */
     padding: 20px;
     color: var(--text-color-light);
+    backdrop-filter: blur(10px);
+  border-radius: 25px;
 }
 
 .textoform h2 {
@@ -263,10 +265,17 @@ header {
     margin-top: 0;
 }
 
+.textoform p {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
 .form {
     flex: 1;
     max-width: 50%;
-    background-color: salmon; /* Debug color */
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -627,10 +636,45 @@ header {
         transform: translateY(5px);
     }
 
-    /* ocultar menú horizontal */
+    /* ********** INICIO DE CÓDIGO CORREGIDO PARA EL MENÚ HAMBURGUESA ********** */
     .navbar-menu {
+        /* Ocultar menú horizontal */
         display: none;
+        /* Estilos de despliegue */
+        position: absolute;
+        top: 80px; /* 5rem del header (reemplazar por 100% si el header no es fijo) */
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        /*background-color: var(--bg-color-dark);*/
+        background: linear-gradient(180deg, rgba(123,3,35,0.98), rgba(90,0,20,0.98));
+        z-index: 1000;
+        padding: 0;
     }
+
+    .navbar.open .navbar-menu {
+        /* MOSTRAR EL MENÚ cuando la clase 'open' está en el .navbar */
+        display: flex;
+    }
+    
+    .navbar-item {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .navbar-item:last-child {
+        border-bottom: none;
+    }
+
+    .navbar-item a {
+        padding: 15px 20px;
+        display: block;
+        width: 100%; /* Asegura que el enlace sea clicable en todo el ancho */
+        box-sizing: border-box;
+    }
+    /* ********** FIN DE CÓDIGO CORREGIDO PARA EL MENÚ HAMBURGUESA ********** */
+
 
     /* ajustes de hero */
     .card {
@@ -732,5 +776,68 @@ header {
     }
     .map-wrapper iframe {
         height: 220px;
+    }
+}
+.form button:hover {
+    background-color: #555;
+}
+
+/* Estilos para mensajes de validación */
+.form-messages {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    display: none;
+    animation: slideDown 0.3s ease;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+}
+
+.form-messages.show {
+    display: block;
+}
+
+.form-messages.success {
+    background-color: rgba(76, 175, 80, 0.3);
+    border: 2px solid #4CAF50;
+    color: white;
+}
+
+.form-messages.error {
+    background-color: rgba(244, 67, 54, 0.3);
+    border: 2px solid #f44336;
+    color: white;
+}
+
+.error-message {
+    color: #ff6b6b;
+    font-size: 0.875rem;
+    display: block;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    min-height: 20px;
+}
+
+.form input.invalid,
+.form select.invalid {
+    border: 2px solid #ff6b6b;
+    background-color: rgba(255, 107, 107, 0.1);
+}
+
+.form input.valid,
+.form select.valid {
+    border: 2px solid #4CAF50;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
