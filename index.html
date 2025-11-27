@@ -71,7 +71,7 @@
             </div>
         </section>
 
-        <section class="formulario">
+        <!--<section class="formulario">
             <div class="textoform">
                 <h2>¡Contanos más sobre tus gustos!</h2>
                 <p>Mendoza es la tierra del sol y del buen vino, y cada uno de nuestros departamentos vitivinícolas tiene un carácter único. Para poder ofrecerte el texto complementario más relevante y ajustado a tus intereses, solo necesitamos saber un par de cosas.
@@ -121,6 +121,77 @@
                     <option value="pedro">Pedro Giménez</option>
                     <option value="moscatel">Moscatel de Alejandría</option>
                 </select>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>-->
+        <section class="formulario">
+            <div class="textoform">
+                <h2>¡Contanos más sobre tus gustos!</h2>
+                <p>Mendoza es la tierra del sol y del buen vino, y cada uno de nuestros departamentos vitivinícolas tiene un carácter único. Para poder ofrecerte el texto complementario más relevante y ajustado a tus intereses, solo necesitamos saber un par de cosas.
+                Elegí tu departamento y cepa preferida en el formulario de abajo. Al completar esta breve selección, desbloquearemos información exclusiva sobre las características de esa región, las notas de cata típicas de esa cepa en ese terroir, ¡y mucho más!
+                No te lo pierdas! Tu elección nos ayudará a personalizar tu experiencia en Uncorking Mendoza. Completá el formulario ahora para descorchar todo el potencial de tu próximo vino.</p>
+            </div>
+            
+            <form class="form" id="contactForm" novalidate>
+                <!-- Sección de mensajes -->
+                <div class="form-messages" id="formMessages"></div>
+
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <span class="error-message" id="errorNombre"></span>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error-message" id="errorEmail"></span>
+
+                <label for="telefono">Teléfono (opcional):</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+54 9 261 123-4567">
+                <span class="error-message" id="errorTelefono"></span>
+
+                <label for="edad">Edad (debe ser mayor de 18 años):</label>
+                <input type="number" id="edad" name="edad" min="18" max="120" required>
+                <span class="error-message" id="errorEdad"></span>
+
+                <label for="departamento">Departamento preferido:</label>
+                <select id="departamento" name="departamento" required>
+                    <option value="">-- Selecciona un departamento --</option>
+                    <option value="capital">Capital</option>
+                    <option value="godoycruz">Godoy Cruz</option>
+                    <option value="guaymallen">Guaymallén</option>
+                    <option value="lasheras">Las Heras</option>
+                    <option value="lujan">Luján de Cuyo</option>
+                    <option value="maipu">Maipú</option>
+                    <option value="lavalle">Lavalle</option>
+                    <option value="sanmartin">San Martín</option>
+                    <option value="rivadavia">Rivadavia</option>
+                    <option value="junin">Junín</option>
+                    <option value="sanjose">San José</option>
+                    <option value="tupungato">Tupungato</option>
+                    <option value="tunuyan">Tunuyán</option>
+                    <option value="sanrafael">San Rafael</option>
+                    <option value="malargue">Malargüe</option>
+                    <option value="generalalvear">General Alvear</option>
+                    <option value="launion">La Unión</option>
+                    <option value="santarosa">Santa Rosa</option>
+                </select>
+                <span class="error-message" id="errorDepartamento"></span>
+
+                <label for="cepa">¿Cuál es tu cepa favorita?</label>
+                <select id="cepa" name="cepa" required>
+                    <option value="">-- Selecciona una cepa --</option>
+                    <option value="malbec">Malbec</option>
+                    <option value="cabernet">Cabernet Sauvignon</option>
+                    <option value="bonarda">Bonarda</option>
+                    <option value="syrah">Syrah</option>
+                    <option value="merlot">Merlot</option>
+                    <option value="torrontes">Torrontés</option>
+                    <option value="chardonnay">Chardonnay</option>
+                    <option value="sauvignon">Sauvignon Blanc</option>
+                    <option value="pedro">Pedro Giménez</option>
+                    <option value="moscatel">Moscatel de Alejandría</option>
+                </select>
+                <span class="error-message" id="errorCepa"></span>
 
                 <button type="submit">Enviar</button>
             </form>
