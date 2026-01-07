@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor de Feria | Menú Artesanal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wood-dark: #2c1810;
+            --gold-soft: #c5a368;
+            --linen: #fcfaf7;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--linen);
+            color: var(--wood-dark);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Marcellus', serif;
+        }
+
+        .hero-section {
+            background: linear-gradient(to bottom, rgba(44, 24, 16, 0.4), rgba(44, 24, 16, 0.8)), 
+                        url('PASTELES.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .animate-fade-in {
+            background-color: aqua;
+            padding: 20%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border-radius: 25px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .panchito {
+            position: relative;
+            color: gold;
+            background-image: url('pancho.png');
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        
+        .panchito::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 0; /* 👈 detrás del texto */
+        }
+
+        .panchito > * {
+            position: relative;
+            z-index: 1; /* 👈 arriba del blur */
+        }
+        
+        .pastel {
+            position: relative;
+            color: gold;
+            background-image: url('pastel.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        
+        .pastel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 0; /* 👈 detrás del texto */
+        }
+
+        .pastel > * {
+            position: relative;
+            z-index: 1; /* 👈 arriba del blur */
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-blur {
+            background: rgba(252, 250, 247, 0.8);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(44, 24, 16, 0.1);
+        }
+
+        .btn-gold {
+            background: var(--wood-dark);
+            color: white;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-soft);
+            color: var(--wood-dark);
+        }
+
+        .category-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: var(--gold-soft);
+            margin-top: 8px;
+        }
+
+        #cart-modal {
+            display: none;
+            backdrop-filter: blur(4px);
+            transition: opacity 0.3s ease;
+        }
+
+        .floating-cart {
+            box-shadow: 0 10px 30px rgba(44, 24, 16, 0.2);
+        }
+
+        .lang-btn.active {
+            color: var(--gold-soft);
+            border-bottom: 2px solid var(--gold-soft);
+        }
+    </style>
+</head>
+<body class="pb-10">
+
+    <!-- Hero -->
+    <header class="hero-section text-white px-6 text-center">
+        <div class="animate-fade-in">
+            <h1 class="text-6xl md:text-7xl mb-4 tracking-tight" data-key="title">STAND K-19</h1>
+            <div class="h-px w-24 bg-white/50 mx-auto mb-6"></div>
+            <p class="text-xl md:text-2xl font-light italic mb-8 opacity-90" data-key="subtitle">Tradición y sabor en cada receta</p>
+            <span class="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-2 rounded-full text-sm font-semibold tracking-widest uppercase">
+                <span data-key="standLabel">QUINCHO</span> 19
+            </span>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav-blur sticky top-0 z-40 py-5">
+        <div class="max-w-screen-xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex space-x-8 text-xs font-bold uppercase tracking-[0.2em]">
+                <a href="#comida" class="hover:text-[#c5a368] transition-colors" data-key="navFood">Comida</a>
+                <a href="#bebidas" class="hover:text-[#c5a368] transition-colors" data-key="navDrinks">Bebidas</a>
+                <a href="#contacto" class="hover:text-[#c5a368] transition-colors" data-key="navContact">Ubicación</a>
+            </div>
+            <!-- Language Switcher -->
+            <div class="flex items-center space-x-2 text-[10px] font-bold uppercase tracking-wider">
+                <button onclick="setLanguage('es')" id="es-btn" class="lang-btn active px-2 py-1">ES</button>
+                <span class="opacity-20">|</span>
+                <button onclick="setLanguage('en')" id="en-btn" class="lang-btn px-2 py-1">EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-6 py-20">
+        
+        <!-- Comida Section -->
+        <section id="comida" class="mb-32">
+            <div class="mb-12">
+                <h2 class="category-title text-4xl font-serif" data-key="foodTitle">Menú de Comidas</h2>
+                <p class="text-gray-500 mt-2 italic" data-key="foodDesc">Preparaciones del día con ingredientes frescos</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Item: Pancho -->
+                <div class="glass-card p-8 rounded-3xl flex flex-col justify-between h-full">
+                    <div class="panchito">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold" data-key="panchoName">Pancho Premium</h3>
+                            <span class="text-lg font-serif text-[#c5a368]">$3.000</span>
+                        </div>
+                        <p class="text-white leading-relaxed mb-6" data-key="panchoDesc">Salchicha de primera calidad en pan artesanal, terminada con lluvia de papas crocantes y aderezos especiales.</p>
+                    </div>
+                    <button onclick="addToCart('Pancho Premium', 3000)" class="btn-gold w-full py-4 rounded-xl font-bold uppercase text-xs tracking-widest add-btn" data-key="addBtn">
+                        Agregar al Pedido
+                    </button>
+                </div>
+
+                <!-- Item: Empanada -->
+                <div class="glass-card p-8 rounded-3xl flex flex-col justify-between h-full">
+                    <div class="pastel">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold" data-key="empanadaName">Empanadas Caseras</h3>
+                            <span class="text-lg font-serif text-[#c5a368]">$10.000</span>
+                        </div>
+                        <p class="text-white leading-relaxed mb-6" data-key="empanadaDesc">Receta familiar. Carne cortada a cuchillo, o jamón y muzzarella. Horneadas al momento.</p>
+                    </div>
+                    <button onclick="addToCart('Empanada Casera', 10000)" class="btn-gold w-full py-4 rounded-xl font-bold uppercase text-xs tracking-widest add-btn" data-key="addBtn">
+                        Agregar al Pedido
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bebidas Section -->
+        <section id="bebidas" class="mb-32">
+            <div class="mb-12">
+                <h2 class="category-title text-4xl font-serif" data-key="drinksTitle">Bebidas Frescas</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="glass-card p-8 rounded-3xl flex flex-col justify-between h-full border-l-4 border-[#c5a368]/30">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold" data-key="flavoredWaterName">Aguas Saborizadas</h3>
+                            <span class="text-lg font-serif text-[#c5a368]">$1.500</span>
+                        </div>
+                        <p class="text-gray-600 mb-6" data-key="flavoredWaterDesc">Pomelo, Naranja o Manzana (500ml). Perfectamente heladas.</p>
+                    </div>
+                    <button onclick="addToCart('Agua Saborizada', 1500)" class="btn-gold w-full py-4 rounded-xl font-bold uppercase text-xs tracking-widest add-btn" data-key="addBtn">
+                        Agregar al Pedido
+                    </button>
+                </div>
+
+                <div class="glass-card p-8 rounded-3xl flex flex-col justify-between h-full border-l-4 border-[#c5a368]/30">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold" data-key="mineralWaterName">Agua Mineral</h3>
+                            <span class="text-lg font-serif text-[#c5a368]">$1000</span>
+                        </div>
+                        <p class="text-gray-600 mb-6" data-key="mineralWaterDesc">Con o sin gas (500ml). Manantial de pureza.</p>
+                    </div>
+                    <button onclick="addToCart('Agua Mineral', 1000)" class="btn-gold w-full py-4 rounded-xl font-bold uppercase text-xs tracking-widest add-btn" data-key="addBtn">
+                        Agregar al Pedido
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ubicación/Contacto -->
+        <section id="contacto" class="relative overflow-hidden rounded-[3rem] bg-[#2c1810] text-[#fcfaf7] p-12 text-center">
+            <div class="relative z-10">
+                <h2 class="text-4xl font-serif mb-6" data-key="visitUs">Visítanos</h2>
+                <div class="text-xl mb-8 font-light">
+                    <span data-key="locationText">Estamos ubicados en:</span> <br>
+                    <span class="text-[#c5a368] font-bold text-3xl uppercase" data-key="standLocation">QUINCHO 19</span>
+                </div>
+                <div class="flex flex-col items-center gap-4">
+                    <p class="opacity-60 text-sm italic mb-2" data-key="waPrompt">Consulta disponibilidad o pedidos grandes por WhatsApp</p>
+                    <a href="https://wa.me/5491122334455" target="_blank" class="bg-[#25D366] hover:scale-105 transition-transform px-10 py-4 rounded-full font-bold flex items-center gap-3">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.067 2.877 1.215 3.076.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        <span data-key="waBtn">Escribir por WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+            <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-[#c5a368]/10 rounded-full blur-3xl"></div>
+        </section>
+    </main>
+
+    <!-- Floating Cart -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <button onclick="toggleCart()" class="floating-cart bg-[#2c1810] text-white p-5 rounded-full flex items-center gap-4 border border-white/10 hover:scale-110 transition-transform">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+            <span id="cart-count" class="font-bold bg-[#c5a368] text-[#2c1810] w-6 h-6 flex items-center justify-center rounded-full text-xs">0</span>
+        </button>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 z-[60] flex items-center justify-center p-6 bg-[#2c1810]/40">
+        <div class="bg-white rounded-[2rem] max-w-md w-full p-8 shadow-2xl relative">
+            <button onclick="toggleCart()" class="absolute top-6 right-6 text-gray-400 hover:text-black">✕</button>
+            <h2 class="text-3xl font-serif mb-8 text-center" data-key="cartTitle">Tu Pedido</h2>
+            
+            <div id="cart-items" class="space-y-4 mb-8 max-h-[40vh] overflow-y-auto pr-2">
+                <!-- Cart items will be here -->
+            </div>
+
+            <div class="border-t border-gray-100 pt-6">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="text-gray-500 font-semibold" data-key="totalToPay">Total a pagar</span>
+                    <span id="cart-total" class="text-3xl font-serif text-[#2c1810]">$0</span>
+                </div>
+                <button onclick="sendOrder()" class="w-full bg-[#2c1810] text-white py-5 rounded-2xl font-bold uppercase tracking-widest hover:bg-[#c5a368] hover:text-[#2c1810] transition-colors" data-key="confirmBtn">
+                    Enviar a WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            es: {
+                title: "Sabor de Feria",
+                subtitle: "Tradición y sabor en cada receta",
+                standLabel: "Stand",
+                navFood: "Comida",
+                navDrinks: "Bebidas",
+                navContact: "Ubicación",
+                foodTitle: "Menú de Comidas",
+                foodDesc: "Preparaciones del día con ingredientes frescos",
+                panchoName: "Pancho Premium",
+                panchoDesc: "Salchicha alemana en pan de viena artesanal, terminada con lluvia de papas crocantes y aderezos especiales.",
+                empanadaName: "Empanadas Caseras",
+                empanadaDesc: "Receta familiar. Carne cortada a cuchillo, o jamón y muzzarella. Horneadas al momento.",
+                drinksTitle: "Bebidas Frescas",
+                flavoredWaterName: "Aguas Saborizadas",
+                flavoredWaterDesc: "Pomelo, Naranja o Manzana (500ml). Perfectamente heladas.",
+                mineralWaterName: "Agua Mineral",
+                mineralWaterDesc: "Con o sin gas (500ml). Manantial de pureza.",
+                visitUs: "Visítanos",
+                locationText: "Estamos ubicados en:",
+                standLocation: "QUINCHO 19 - STAND K-19",
+                waPrompt: "Consulta disponibilidad o pedidos grandes por WhatsApp",
+                waBtn: "Escribir por WhatsApp",
+                cartTitle: "Tu Pedido",
+                emptyCart: "Tu pedido está vacío...",
+                totalToPay: "Total a pagar",
+                confirmBtn: "Enviar a WhatsApp",
+                addBtn: "Agregar al Pedido",
+                added: "¡Añadido!",
+                remove: "Quitar",
+                waOrderTitle: "🏛️ *NUEVO PEDIDO - SABOR DE FERIA*",
+                waTotal: "TOTAL",
+                waLocation: "Ubicación",
+                waRetire: "¿Me confirman si puedo pasar a retirar?"
+            },
+            en: {
+                title: "Fair Flavor",
+                subtitle: "Tradition and flavor in every recipe",
+                standLabel: "Stand",
+                navFood: "Food",
+                navDrinks: "Drinks",
+                navContact: "Location",
+                foodTitle: "Food Menu",
+                foodDesc: "Daily preparations with fresh ingredients",
+                panchoName: "Premium Hot Dog",
+                panchoDesc: "German sausage in artisanal bread, topped with crispy potato sticks and special sauces.",
+                empanadaName: "Homemade Empanadas",
+                empanadaDesc: "Family recipe. Hand-cut beef, or ham and mozzarella. Freshly baked.",
+                drinksTitle: "Fresh Drinks",
+                flavoredWaterName: "Flavored Waters",
+                flavoredWaterDesc: "Grapefruit, Orange or Apple (500ml). Perfectly chilled.",
+                mineralWaterName: "Mineral Water",
+                mineralWaterDesc: "Sparkling or still (500ml). Pure spring water.",
+                visitUs: "Visit Us",
+                locationText: "We are located at:",
+                standLocation: "QUINCHO 19 - STAND K-19",
+                waPrompt: "Inquiries or large orders via WhatsApp",
+                waBtn: "Write on WhatsApp",
+                cartTitle: "Your Order",
+                emptyCart: "Your order is empty...",
+                totalToPay: "Total to pay",
+                confirmBtn: "Send to WhatsApp",
+                addBtn: "Add to Order",
+                added: "Added!",
+                remove: "Remove",
+                waOrderTitle: "🏛️ *NEW ORDER - FAIR FLAVOR*",
+                waTotal: "TOTAL",
+                waLocation: "Location",
+                waRetire: "Can you confirm if I can pick it up?"
+            }
+        };
+
+        let currentLang = 'es';
+        let cart = [];
+        const whatsappNumber = "5491122334455";
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // UI translation
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            // Buttons state
+            document.getElementById('es-btn').classList.toggle('active', lang === 'es');
+            document.getElementById('en-btn').classList.toggle('active', lang === 'en');
+            
+            updateCart(); // Refresh cart names and empty message
+        }
+
+        function addToCart(nameKey, price) {
+            cart.push({ key: nameKey, price });
+            updateCart();
+            
+            const btn = event.target;
+            const original = translations[currentLang].addBtn;
+            btn.innerText = translations[currentLang].added;
+            btn.style.background = "#c5a368";
+            btn.style.color = "#2c1810";
+            setTimeout(() => {
+                btn.innerText = original;
+                btn.style.background = "";
+                btn.style.color = "";
+            }, 800);
+        }
+
+        function updateCart() {
+            const count = document.getElementById('cart-count');
+            const itemsContainer = document.getElementById('cart-items');
+            const totalContainer = document.getElementById('cart-total');
+            
+            count.innerText = cart.length;
+            
+            if (cart.length === 0) {
+                itemsContainer.innerHTML = `<p class="text-gray-400 italic text-center py-10">${translations[currentLang].emptyCart}</p>`;
+                totalContainer.innerText = "$0";
+                return;
+            }
+
+            let html = "";
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                let displayName = item.key;
+                if (item.key === 'Pancho Premium') displayName = translations[currentLang].panchoName;
+                if (item.key === 'Empanada Casera') displayName = translations[currentLang].empanadaName;
+                if (item.key === 'Agua Saborizada') displayName = translations[currentLang].flavoredWaterName;
+                if (item.key === 'Agua Mineral') displayName = translations[currentLang].mineralWaterName;
+
+                html += `
+                    <div class="flex justify-between items-center group">
+                        <div>
+                            <p class="font-bold text-[#2c1810]">${displayName}</p>
+                            <p class="text-sm text-[#c5a368] font-serif">$${item.price}</p>
+                        </div>
+                        <button onclick="removeItem(${index})" class="text-red-300 hover:text-red-600 text-xs uppercase font-bold transition-colors">${translations[currentLang].remove}</button>
+                    </div>
+                `;
+                total += item.price;
+            });
+            
+            itemsContainer.innerHTML = html;
+            totalContainer.innerText = `$${total.toLocaleString('es-AR')}`;
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            const isVisible = modal.style.display === 'flex';
+            modal.style.display = isVisible ? 'none' : 'flex';
+        }
+
+        function sendOrder() {
+            if (cart.length === 0) return;
+
+            let total = 0;
+            const t = translations[currentLang];
+            let message = `${t.waOrderTitle}\n\n`;
+            
+            cart.forEach(item => {
+                let displayName = item.key;
+                if (item.key === 'Pancho Premium') displayName = t.panchoName;
+                if (item.key === 'Empanada Casera') displayName = t.empanadaName;
+                if (item.key === 'Agua Saborizada') displayName = t.flavoredWaterName;
+                if (item.key === 'Agua Mineral') displayName = t.mineralWaterName;
+
+                message += `• ${displayName} ($${item.price})\n`;
+                total += item.price;
+            });
+            
+            message += `\n💰 *${t.waTotal}: $${total.toLocaleString('es-AR')}*`;
+            message += `\n📍 ${t.waLocation}: *QUINCHO 19 - K-19*`;
+            message += `\n\n_${t.waRetire}_`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('cart-modal');
+            if (event.target == modal) {
+                toggleCart();
+            }
+        }
+    </script>
+</body>
+</html>
