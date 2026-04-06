@@ -1,415 +1,571 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ariel Barros — Desarrollador Web</title>
-  <meta name="description" content="Desarrollador web fullstack basado en Buenos Aires. Construyo experiencias digitales modernas para startups y empresas.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Syne:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mi Agenda — Facu & Trabajo</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ════════════════════════ TOKENS */
+:root {
+  --work:      #3b82f6; --work-s:     #60a5fa;
+  --algebra:   #8b5cf6; --algebra-s:  #a78bfa;
+  --analisis:  #10b981; --analisis-s: #34d399;
+  --datos:     #f59e0b; --datos-s:    #fbbf24;
+  --fisica:    #ef4444; --fisica-s:   #f87171;
+  --exam:      #ec4899; --exam-s:     #f472b6;
+  --r: 10px; --r-lg: 14px;
+}
+[data-theme="dark"] {
+  --bg:#0f0f13; --bg2:#16161d; --bg3:#1d1d26;
+  --border:rgba(255,255,255,0.08); --border2:rgba(255,255,255,0.15);
+  --text:#f0eeff; --text2:#9892b0; --text3:#3e3a58;
+  --shadow:0 8px 32px rgba(0,0,0,0.6);
+}
+[data-theme="light"] {
+  --bg:#f4f2ee; --bg2:#ffffff; --bg3:#ede9e2;
+  --border:rgba(0,0,0,0.08); --border2:rgba(0,0,0,0.16);
+  --text:#18161f; --text2:#6b6580; --text3:#c0bcd0;
+  --shadow:0 8px 32px rgba(0,0,0,0.1);
+}
+
+/* ════════════════════════ RESET */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Bricolage Grotesque',sans-serif;font-size:14px;line-height:1.5;min-height:100vh;transition:background .25s,color .25s;}
+button{cursor:pointer;font-family:inherit;}
+input,textarea,select{font-family:inherit;}
+::-webkit-scrollbar{width:3px;height:3px;}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
+
+/* ════════════════════════ TOPBAR */
+.topbar{
+  position:sticky;top:0;z-index:300;
+  height:54px;background:var(--bg2);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 1.25rem;gap:10px;
+  transition:background .25s;
+}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;letter-spacing:-.04em;color:var(--text);flex:1;}
+.logo span{color:var(--algebra-s);}
+.tb-mid{font-size:12px;color:var(--text2);font-family:'Syne',sans-serif;letter-spacing:.01em;}
+.tb-mid strong{color:var(--text);font-weight:700;}
+.icon-btn{
+  width:32px;height:32px;border:1px solid var(--border);border-radius:8px;
+  background:transparent;color:var(--text2);display:flex;align-items:center;justify-content:center;
+  font-size:14px;transition:all .15s;flex-shrink:0;
+}
+.icon-btn:hover{background:var(--bg3);color:var(--text);border-color:var(--border2);}
+
+/* ════════════════════════ LAYOUT */
+.layout{display:grid;grid-template-columns:272px 1fr;height:calc(100vh - 54px);}
+@media(max-width:760px){.layout{grid-template-columns:1fr;height:auto;}}
+
+/* ════════════════════════ SIDEBAR */
+.sidebar{
+  background:var(--bg2);border-right:1px solid var(--border);
+  overflow-y:auto;padding:1.25rem;display:flex;flex-direction:column;gap:1.5rem;
+  transition:background .25s;
+}
+@media(max-width:760px){.sidebar{border-right:none;border-bottom:1px solid var(--border);}}
+.sec-lbl{
+  font-family:'Syne',sans-serif;font-size:9px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:9px;
+}
+
+/* ── Mini Calendar */
+.cal-nav-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;}
+.cal-m-title{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:800;letter-spacing:-.03em;}
+.nav-pair{display:flex;gap:3px;}
+.nav-b{
+  width:24px;height:24px;border:1px solid var(--border);border-radius:6px;
+  background:transparent;color:var(--text2);font-size:13px;
+  display:flex;align-items:center;justify-content:center;transition:all .12s;
+}
+.nav-b:hover{background:var(--bg3);color:var(--text);}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
+.cal-dow{
+  font-family:'Syne',sans-serif;font-size:9px;font-weight:700;
+  color:var(--text3);text-align:center;padding:2px 0 5px;letter-spacing:.05em;
+}
+.cal-cell{
+  position:relative;border-radius:7px;cursor:pointer;overflow:hidden;
+  aspect-ratio:1;display:flex;flex-direction:column;align-items:center;
+  transition:all .12s;border:1.5px solid transparent;
+}
+.cal-cell:hover{border-color:var(--border2);}
+.cal-cell.other{opacity:.28;}
+.cal-cell.is-today{border-color:var(--text2)!important;}
+.cal-cell.is-sel{border-color:var(--algebra-s)!important;box-shadow:0 0 0 2px rgba(139,92,246,.25);}
+.cal-num{
+  font-family:'Syne',sans-serif;font-size:11px;font-weight:700;
+  color:var(--text);padding:3px 0 0;z-index:1;line-height:1;
+}
+.cal-cell.other .cal-num{color:var(--text3);}
+.cal-stripes{display:flex;width:100%;flex:1;gap:1px;padding:1px 3px 3px;align-items:flex-end;}
+.cal-stripe{flex:1;border-radius:2px;min-height:5px;max-height:14px;}
+.edot{position:absolute;top:2px;right:3px;width:5px;height:5px;background:var(--exam-s);border-radius:50%;}
+.ndot{position:absolute;top:2px;right:10px;width:5px;height:5px;background:var(--datos-s);border-radius:50%;}
+
+/* ── Legend */
+.leg-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+.leg{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2);}
+.leg-dot{width:8px;height:8px;border-radius:3px;flex-shrink:0;}
+
+/* ── Exams list */
+.exam-list{display:flex;flex-direction:column;gap:5px;}
+.echip{
+  display:flex;align-items:center;gap:8px;
+  padding:7px 9px;border-radius:8px;
+  border:1px solid rgba(236,72,153,.2);background:rgba(236,72,153,.07);
+  cursor:pointer;transition:all .12s;
+}
+.echip:hover{border-color:var(--exam-s);}
+.echip-date{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;color:var(--exam-s);min-width:32px;}
+.echip-name{font-size:11px;color:var(--text);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.cdel{background:none;border:none;color:var(--text3);font-size:12px;line-height:1;transition:color .12s;flex-shrink:0;}
+.cdel:hover{color:var(--exam-s);}
+.empty-msg{font-size:11px;color:var(--text3);font-style:italic;}
+
+/* ════════════════════════ MAIN */
+.main-panel{overflow-y:auto;display:flex;flex-direction:column;background:var(--bg);transition:background .25s;}
+
+/* Mobile day nav */
+.mob-nav{
+  display:none;align-items:center;justify-content:space-between;
+  padding:8px 1.25rem;background:var(--bg2);border-bottom:1px solid var(--border);
+}
+@media(max-width:760px){.mob-nav{display:flex;} .tb-mid{display:none;}}
+.mob-nav-b{
+  width:30px;height:30px;border:1px solid var(--border);border-radius:7px;
+  background:transparent;color:var(--text2);font-size:15px;
+  display:flex;align-items:center;justify-content:center;transition:all .12s;
+}
+.mob-nav-b:hover{background:var(--bg3);color:var(--text);}
+.mob-lbl{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;letter-spacing:-.02em;}
+
+/* Day header */
+.day-hdr{
+  padding:1.25rem 1.5rem 1rem;border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;justify-content:space-between;
+  flex-wrap:wrap;gap:10px;background:var(--bg2);transition:background .25s;
+  position:sticky;top:0;z-index:100;
+}
+@media(max-width:760px){.day-hdr{padding:1rem;}}
+.day-name-big{font-family:'Syne',sans-serif;font-size:clamp(1.4rem,4vw,1.85rem);font-weight:800;letter-spacing:-.04em;line-height:1;}
+.day-date-sub{font-size:12px;color:var(--text2);margin-top:3px;font-family:'Syne',sans-serif;}
+.day-btns{display:flex;gap:7px;flex-wrap:wrap;}
+.dbtn{
+  font-size:12px;font-weight:500;padding:7px 13px;border-radius:8px;
+  border:1px solid var(--border);background:var(--bg3);color:var(--text2);
+  display:flex;align-items:center;gap:5px;transition:all .12s;
+}
+.dbtn:hover{color:var(--text);border-color:var(--border2);}
+.dbtn-exam{border-color:rgba(236,72,153,.3);color:var(--exam-s);background:rgba(236,72,153,.07);}
+.dbtn-exam:hover{border-color:var(--exam-s);background:rgba(236,72,153,.14);}
+.dbtn-note{border-color:rgba(245,158,11,.3);color:var(--datos-s);background:rgba(245,158,11,.07);}
+.dbtn-note:hover{border-color:var(--datos-s);background:rgba(245,158,11,.14);}
+
+/* Day content */
+.day-content{padding:1.25rem 1.5rem;display:flex;flex-direction:column;gap:10px;}
+@media(max-width:760px){.day-content{padding:1rem;}}
+
+/* Note card */
+.note-card{
+  border-radius:var(--r-lg);border:1px solid rgba(245,158,11,.3);
+  background:rgba(245,158,11,.07);padding:12px 14px;
+}
+.note-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.note-lbl{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--datos-s);}
+.note-del-b{background:none;border:none;color:var(--text3);font-size:13px;transition:color .12s;}
+.note-del-b:hover{color:var(--datos-s);}
+.note-ta{width:100%;background:transparent;border:none;outline:none;resize:none;color:var(--text);font-size:13px;line-height:1.6;min-height:52px;}
+.note-ta::placeholder{color:var(--text3);}
+
+/* Exam alert */
+.exam-alert{
+  border-radius:var(--r-lg);border:1px solid rgba(236,72,153,.3);
+  border-left:3px solid var(--exam-s);background:rgba(236,72,153,.07);
+  padding:11px 14px;display:flex;align-items:center;gap:10px;
+}
+.ea-icon{font-size:18px;flex-shrink:0;}
+.ea-info{flex:1;min-width:0;}
+.ea-lbl{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--exam-s);}
+.ea-name{font-size:13px;font-weight:500;margin-top:2px;}
+.ea-del{background:none;border:none;color:var(--text3);font-size:14px;transition:color .12s;}
+.ea-del:hover{color:var(--exam-s);}
+
+/* Schedule section */
+.sched-title{
+  font-family:'Syne',sans-serif;font-size:9px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--text3);
+  margin-bottom:8px;margin-top:4px;
+}
+
+/* Schedule cards */
+.sched-card{
+  border-radius:var(--r);padding:11px 14px;
+  display:flex;align-items:center;gap:11px;
+  position:relative;overflow:hidden;
+  transition:transform .12s;
+}
+.sched-card:hover{transform:translateX(4px);}
+.sched-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;}
+.sc-icon{font-size:17px;flex-shrink:0;}
+.sc-body{flex:1;min-width:0;}
+.sc-title{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sc-sub{font-size:11px;margin-top:1px;}
+.sc-time{
+  font-family:'Syne',sans-serif;font-size:11px;font-weight:700;
+  white-space:nowrap;flex-shrink:0;
+}
+.sc-tag{
+  font-size:10px;padding:2px 7px;border-radius:4px;font-weight:500;flex-shrink:0;
+}
+@media(max-width:480px){.sc-tag{display:none;}}
+
+/* Card variants */
+.cw{background:rgba(59,130,246,.1);}
+.cw::before{background:var(--work-s);}
+.cw .sc-title,.cw .sc-time{color:var(--work-s);}
+.cw .sc-sub{color:color-mix(in srgb,var(--work-s) 60%,var(--text2));}
+.cw .sc-tag{background:rgba(59,130,246,.18);color:var(--work-s);}
+
+.ca{background:rgba(139,92,246,.1);}
+.ca::before{background:var(--algebra-s);}
+.ca .sc-title,.ca .sc-time{color:var(--algebra-s);}
+.ca .sc-sub{color:color-mix(in srgb,var(--algebra-s) 60%,var(--text2));}
+.ca .sc-tag{background:rgba(139,92,246,.18);color:var(--algebra-s);}
+
+.cm{background:rgba(16,185,129,.1);}
+.cm::before{background:var(--analisis-s);}
+.cm .sc-title,.cm .sc-time{color:var(--analisis-s);}
+.cm .sc-sub{color:color-mix(in srgb,var(--analisis-s) 60%,var(--text2));}
+.cm .sc-tag{background:rgba(16,185,129,.18);color:var(--analisis-s);}
+
+.cd{background:rgba(245,158,11,.1);}
+.cd::before{background:var(--datos-s);}
+.cd .sc-title,.cd .sc-time{color:var(--datos-s);}
+.cd .sc-sub{color:color-mix(in srgb,var(--datos-s) 60%,var(--text2));}
+.cd .sc-tag{background:rgba(245,158,11,.18);color:var(--datos-s);}
+
+.cf{background:rgba(239,68,68,.1);}
+.cf::before{background:var(--fisica-s);}
+.cf .sc-title,.cf .sc-time{color:var(--fisica-s);}
+.cf .sc-sub{color:color-mix(in srgb,var(--fisica-s) 60%,var(--text2));}
+.cf .sc-tag{background:rgba(239,68,68,.18);color:var(--fisica-s);}
+
+.free-day{padding:3rem;text-align:center;color:var(--text3);font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:-.01em;}
+
+/* ════════════════════════ MODAL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;align-items:center;justify-content:center;padding:1rem;}
+.overlay.open{display:flex;}
+.modal{
+  background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r-lg);
+  padding:1.5rem;width:100%;max-width:350px;box-shadow:var(--shadow);transition:background .25s;
+}
+.modal-title{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;letter-spacing:-.03em;margin-bottom:1.1rem;}
+.mfield{margin-bottom:12px;}
+.mfield label{display:block;font-family:'Syne',sans-serif;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text2);margin-bottom:5px;}
+.mfield input{
+  width:100%;padding:9px 11px;border:1px solid var(--border2);border-radius:8px;
+  background:var(--bg3);color:var(--text);font-size:13px;outline:none;
+  transition:border-color .15s;
+}
+.mfield input:focus{border-color:var(--algebra-s);}
+.mbtns{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;}
+.mbtn{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;padding:8px 16px;border-radius:8px;border:1px solid var(--border);transition:all .12s;}
+.mbtn-c{background:transparent;color:var(--text2);}
+.mbtn-c:hover{background:var(--bg3);}
+.mbtn-s{background:var(--text);color:var(--bg);border-color:var(--text);}
+.mbtn-s:hover{opacity:.85;}
+
+@keyframes up{from{opacity:0;transform:translateY(7px);}to{opacity:1;transform:translateY(0);}}
+.sched-card,.note-card,.exam-alert{animation:up .18s ease both;}
+</style>
 </head>
 <body>
 
-  <!-- ===================== NAV ===================== -->
-  <nav class="nav" id="navbar">
-    <a href="#inicio" class="nav-logo">Ariel Barros</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#sobre-mi">Sobre mí</a></li>
-      <li><a href="#proyectos">Proyectos</a></li>
-      <li><a href="#cv">CV</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <!-- ===================== HERO ===================== -->
-  <section class="hero" id="inicio">
-    <div class="hero-bg-art" aria-hidden="true">
-      <div class="dot-grid"></div>
-      <div class="circle circle-1"></div>
-      <div class="circle circle-2"></div>
-      <div class="circle circle-3"></div>
-    </div>
-
-    <div class="hero-left reveal">
-      <div class="hero-eyebrow">
-        <span class="eyebrow-line"></span>
-        Desarrollador Web · Buenos Aires
-      </div>
-      <h1 class="hero-h1">
-        Diseño lo<br>que tu negocio<br><em>necesita</em>
-      </h1>
-      <p class="hero-desc">
-        Construyo experiencias digitales cuidadas al detalle — desde la idea hasta el lanzamiento. Cada proyecto es único, cada línea de código tiene intención.
-      </p>
-      <div class="hero-btns">
-        <a href="#proyectos" class="btn-dark">Ver proyectos &rarr;</a>
-        <a href="#contacto" class="btn-outline">Contactar</a>
-      </div>
-    </div>
-
-    <div class="hero-right reveal reveal-delay-1">
-      <div class="hero-card-stack">
-        <div class="h-card h-card-1"></div>
-        <div class="h-card h-card-2"></div>
-        <div class="h-card h-card-main">
-          <div class="h-card-photo-placeholder">
-            <div class="photo-initials">AB</div>
-          </div>
-          <div class="h-card-info">
-            <div class="h-card-name">Ariel Barros</div>
-            <div class="h-card-role">Desarrollador Web &amp; UI</div>
-          </div>
-        </div>
-        <div class="stats-row">
-          <div class="stat-pill">
-            <div class="stat-num">5+</div>
-            <div class="stat-lab">Años exp.</div>
-          </div>
-          <div class="stat-pill">
-            <div class="stat-num">40+</div>
-            <div class="stat-lab">Proyectos</div>
-          </div>
-          <div class="stat-pill">
-            <div class="stat-num">30+</div>
-            <div class="stat-lab">Clientes</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== MARQUEE ===================== -->
-  <div class="marquee-wrap" aria-hidden="true">
-    <div class="marquee-track" id="marqueeTrack"></div>
+<header class="topbar">
+  <div class="logo">mi<span>agenda</span></div>
+  <div class="tb-mid" id="tb-mid"></div>
+  <div style="display:flex;gap:7px;align-items:center;">
+    <button class="icon-btn" id="today-btn" title="Ir a hoy" style="font-size:11px;font-family:'Syne',sans-serif;font-weight:700;width:auto;padding:0 10px;letter-spacing:.03em;">HOY</button>
+    <button class="icon-btn" id="theme-btn" title="Cambiar tema">☀</button>
   </div>
+</header>
 
-  <!-- ===================== SOBRE MÍ ===================== -->
-  <section id="sobre-mi" class="section-about">
-    <div class="container">
-      <div class="sec-label reveal">Sobre mí</div>
-      <h2 class="sec-title reveal">Desarrollo con propósito,<br><em>diseño con cuidado</em></h2>
-      <div class="about-wrap">
-        <div class="about-bio reveal">
-          <p>Soy desarrollador web con más de 5 años de experiencia creando productos digitales para startups, agencias y empresas consolidadas. Me especializo en frontend moderno y desarrollo fullstack, con especial atención a la performance y la experiencia de usuario.</p>
-          <p>Cada proyecto que tomo es una oportunidad de resolver un problema real. Trabajo de manera independiente y remota, colaborando de cerca con mis clientes para entender el negocio antes de escribir la primera línea de código.</p>
-          <div class="about-tags">
-            <span class="about-tag">React</span>
-            <span class="about-tag">Next.js</span>
-            <span class="about-tag">TypeScript</span>
-            <span class="about-tag">Node.js</span>
-            <span class="about-tag">PostgreSQL</span>
-            <span class="about-tag">Figma</span>
-            <span class="about-tag">AWS</span>
-            <span class="about-tag">Tailwind CSS</span>
-          </div>
-        </div>
-        <div class="about-visual reveal reveal-delay-1">
-          <div class="skill-bars">
-            <div class="skill-bar-item">
-              <div class="skill-bar-label"><span>Frontend</span><span class="skill-bar-pct">95%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-label"><span>Backend / APIs</span><span class="skill-bar-pct">85%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-label"><span>UI / UX Design</span><span class="skill-bar-pct">80%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-label"><span>Base de datos</span><span class="skill-bar-pct">78%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div>
-            </div>
-            <div class="skill-bar-item">
-              <div class="skill-bar-label"><span>DevOps / Cloud</span><span class="skill-bar-pct">65%</span></div>
-              <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div>
-            </div>
-          </div>
+<div class="layout">
+
+  <aside class="sidebar">
+    <!-- Calendar -->
+    <div>
+      <div class="cal-nav-row">
+        <span class="cal-m-title" id="cal-title"></span>
+        <div class="nav-pair">
+          <button class="nav-b" id="prev-m">‹</button>
+          <button class="nav-b" id="next-m">›</button>
         </div>
       </div>
+      <div class="cal-grid" id="cal-grid"></div>
     </div>
-  </section>
 
-  <!-- ===================== PROYECTOS ===================== -->
-  <section id="proyectos" class="section-projects">
-    <div class="container">
-      <div class="projects-header">
-        <div>
-          <div class="sec-label reveal">Proyectos</div>
-          <h2 class="sec-title reveal">Trabajo <em>seleccionado</em></h2>
-        </div>
-        <a href="#contacto" class="btn-outline reveal">Ver todos &rarr;</a>
-      </div>
-      <div class="projects-grid">
-
-        <div class="proj-main reveal">
-          <div class="proj-thumb proj-thumb-dark1">
-            <svg class="deco-svg" viewBox="0 0 400 520" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <line x1="0" y1="130" x2="400" y2="130" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <line x1="0" y1="260" x2="400" y2="260" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <line x1="0" y1="390" x2="400" y2="390" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <line x1="100" y1="0" x2="100" y2="520" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <line x1="200" y1="0" x2="200" y2="520" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <line x1="300" y1="0" x2="300" y2="520" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <circle cx="200" cy="260" r="80" fill="none" stroke="rgba(200,169,110,0.08)" stroke-width="1"/>
-              <circle cx="200" cy="260" r="140" fill="none" stroke="rgba(200,169,110,0.06)" stroke-width="1"/>
-              <circle cx="200" cy="260" r="200" fill="none" stroke="rgba(200,169,110,0.04)" stroke-width="1"/>
-            </svg>
-          </div>
-          <div class="proj-arrow">&nearr;</div>
-          <div class="proj-overlay">
-            <div class="proj-tag-pill">E-commerce</div>
-            <div class="proj-title">Tienda Online — Moda Premium</div>
-            <div class="proj-desc">E-commerce completo con carrito, pagos integrados y panel de administración personalizado.</div>
-          </div>
-        </div>
-
-        <div class="proj-card reveal reveal-delay-1">
-          <div class="proj-thumb proj-thumb-dark2">
-            <svg class="deco-svg" viewBox="0 0 300 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <line x1="0" y1="60" x2="300" y2="60" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <line x1="0" y1="120" x2="300" y2="120" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <line x1="0" y1="180" x2="300" y2="180" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <line x1="75" y1="0" x2="75" y2="240" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <line x1="150" y1="0" x2="150" y2="240" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <line x1="225" y1="0" x2="225" y2="240" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <rect x="90" y="80" width="120" height="80" fill="none" stroke="rgba(200,169,110,0.08)" stroke-width="1"/>
-            </svg>
-          </div>
-          <div class="proj-arrow">&nearr;</div>
-          <div class="proj-overlay">
-            <div class="proj-tag-pill">SaaS Dashboard</div>
-            <div class="proj-title">Analytics Platform</div>
-            <div class="proj-desc">Métricas en tiempo real para startups B2B.</div>
-          </div>
-        </div>
-
-        <div class="proj-card reveal reveal-delay-2">
-          <div class="proj-thumb proj-thumb-dark3">
-            <svg class="deco-svg" viewBox="0 0 300 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <line x1="0" y1="80" x2="300" y2="80" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <line x1="0" y1="160" x2="300" y2="160" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <line x1="100" y1="0" x2="100" y2="240" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <line x1="200" y1="0" x2="200" y2="240" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
-              <circle cx="150" cy="120" r="60" fill="none" stroke="rgba(200,169,110,0.08)" stroke-width="1"/>
-            </svg>
-          </div>
-          <div class="proj-arrow">&nearr;</div>
-          <div class="proj-overlay">
-            <div class="proj-tag-pill">Web App</div>
-            <div class="proj-title">Sistema de Turnos</div>
-            <div class="proj-desc">Gestión de agenda para clínica médica con notificaciones automáticas.</div>
-          </div>
-        </div>
-
+    <!-- Legend -->
+    <div>
+      <div class="sec-lbl">Materias</div>
+      <div class="leg-grid">
+        <div class="leg"><div class="leg-dot" style="background:var(--work-s)"></div>Trabajo</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--algebra-s)"></div>Álgebra</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--analisis-s)"></div>An. Mat.</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--datos-s)"></div>An. Datos</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--fisica-s)"></div>Física</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--exam-s)"></div>Examen</div>
       </div>
     </div>
-  </section>
 
-  <!-- ===================== CV ===================== -->
-  <section id="cv" class="section-cv">
-    <div class="container">
-      <div class="sec-label reveal">Recorrido</div>
-      <h2 class="sec-title reveal">Experiencia &amp; <em>Formación</em></h2>
-      <div class="cv-inner">
+    <!-- Exams -->
+    <div>
+      <div class="sec-lbl">Próximos exámenes</div>
+      <div class="exam-list" id="sb-exams"></div>
+    </div>
+  </aside>
 
-        <div class="cv-col reveal">
-          <div class="cv-col-head">Experiencia laboral</div>
-          <div class="cv-entry">
-            <div class="cv-period">2022 — Presente</div>
-            <div class="cv-role">Desarrollador Web Freelance</div>
-            <div class="cv-where">Independiente · Remoto</div>
-            <div class="cv-body">Desarrollo end-to-end para clientes de Argentina y LATAM. Gestión completa del proyecto: diseño, desarrollo y entrega.</div>
-          </div>
-          <div class="cv-entry">
-            <div class="cv-period">2020 — 2022</div>
-            <div class="cv-role">Frontend Developer</div>
-            <div class="cv-where">Empresa S.A. · Buenos Aires</div>
-            <div class="cv-body">Desarrollo de interfaces con React en equipo ágil. Mejora de performance y accesibilidad.</div>
-          </div>
-          <div class="cv-entry">
-            <div class="cv-period">2019 — 2020</div>
-            <div class="cv-role">Desarrollador Junior</div>
-            <div class="cv-where">Startup Tech · Buenos Aires</div>
-            <div class="cv-body">Primeros pasos en entorno productivo. HTML, CSS, JavaScript y primeros componentes en React.</div>
-          </div>
-        </div>
+  <main class="main-panel">
+    <div class="mob-nav">
+      <button class="mob-nav-b" id="mob-prev">‹</button>
+      <span class="mob-lbl" id="mob-lbl"></span>
+      <button class="mob-nav-b" id="mob-next">›</button>
+    </div>
 
-        <div class="cv-col reveal reveal-delay-1">
-          <div class="cv-col-head">Educación &amp; cursos</div>
-          <div class="cv-entry">
-            <div class="cv-period">2023</div>
-            <div class="cv-role">Full Stack JavaScript</div>
-            <div class="cv-where">Plataforma online · Certificado</div>
-            <div class="cv-body">Node.js, Express, bases de datos SQL/NoSQL, autenticación y despliegue en la nube.</div>
-          </div>
-          <div class="cv-entry">
-            <div class="cv-period">2018 — 2022</div>
-            <div class="cv-role">Licenciatura en Sistemas</div>
-            <div class="cv-where">Universidad · Buenos Aires</div>
-            <div class="cv-body">Fundamentos de programación, algoritmos, bases de datos y arquitectura de software.</div>
-          </div>
-          <div class="cv-entry">
-            <div class="cv-period">2021</div>
-            <div class="cv-role">UX/UI Design Basics</div>
-            <div class="cv-where">Google / Coursera</div>
-            <div class="cv-body">Principios de diseño centrado en el usuario, wireframing y prototipado en Figma.</div>
-          </div>
-        </div>
-
+    <div class="day-hdr">
+      <div>
+        <div class="day-name-big" id="d-name"></div>
+        <div class="day-date-sub" id="d-date"></div>
+      </div>
+      <div class="day-btns">
+        <button class="dbtn dbtn-exam" onclick="openExamModal()">＋ Examen</button>
+        <button class="dbtn dbtn-note" onclick="toggleNote()">＋ Nota</button>
       </div>
     </div>
-  </section>
 
-  <!-- ===================== SERVICIOS ===================== -->
-  <section id="servicios" class="section-services">
-    <div class="container">
-      <div class="sec-label sec-label--light reveal">Servicios</div>
-      <h2 class="sec-title sec-title--light reveal">Cómo puedo ayudarte <em>a vos</em></h2>
-      <div class="srv-grid">
+    <div class="day-content" id="day-content"></div>
+  </main>
+</div>
 
-        <div class="srv-card reveal">
-          <span class="srv-num">01</span>
-          <div class="srv-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="15" x2="12" y2="15"/></svg>
-          </div>
-          <div class="srv-title">Desarrollo web a medida</div>
-          <div class="srv-desc">Sitios y apps construidos con tecnologías modernas. Rápidos, seguros y escalables desde el primer día.</div>
-        </div>
-
-        <div class="srv-card reveal reveal-delay-1">
-          <span class="srv-num">02</span>
-          <div class="srv-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><line x1="16" y1="11" x2="22" y2="11"/><line x1="19" y1="8" x2="19" y2="14"/></svg>
-          </div>
-          <div class="srv-title">E-commerce &amp; tiendas online</div>
-          <div class="srv-desc">Desde una tienda simple hasta plataformas complejas con múltiples medios de pago y logística.</div>
-        </div>
-
-        <div class="srv-card reveal reveal-delay-2">
-          <span class="srv-num">03</span>
-          <div class="srv-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <div class="srv-title">Landing pages de conversión</div>
-          <div class="srv-desc">Páginas diseñadas para convertir visitas en clientes. Velocidad, diseño y copy orientados a resultados.</div>
-        </div>
-
-        <div class="srv-card reveal">
-          <span class="srv-num">04</span>
-          <div class="srv-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-          </div>
-          <div class="srv-title">Consultoría técnica</div>
-          <div class="srv-desc">Auditorías de código, mejora de performance, elección tecnológica o revisión de arquitectura.</div>
-        </div>
-
-        <div class="srv-card reveal reveal-delay-1">
-          <span class="srv-num">05</span>
-          <div class="srv-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-          </div>
-          <div class="srv-title">Mantenimiento &amp; soporte</div>
-          <div class="srv-desc">Actualizaciones, corrección de bugs y soporte técnico continuo para que tu producto siempre funcione.</div>
-        </div>
-
-        <div class="srv-card reveal reveal-delay-2">
-          <span class="srv-num">06</span>
-          <div class="srv-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9l3 3-3 3M13 15h3M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg>
-          </div>
-          <div class="srv-title">Integración de APIs</div>
-          <div class="srv-desc">Conexión con cualquier servicio externo: pagos, mapas, envíos, CRMs o redes sociales.</div>
-        </div>
-
-      </div>
+<!-- Modal -->
+<div class="overlay" id="exam-modal">
+  <div class="modal">
+    <div class="modal-title">Nuevo examen</div>
+    <div class="mfield">
+      <label>Materia / descripción</label>
+      <input type="text" id="ex-name" placeholder="ej: Álgebra — Parcial 1"/>
     </div>
-  </section>
-
-  <!-- ===================== CONTACTO ===================== -->
-  <section id="contacto" class="section-contact">
-    <div class="container">
-      <div class="sec-label reveal">Contacto</div>
-      <h2 class="sec-title reveal">¿Empezamos a <em>trabajar juntos?</em></h2>
-      <div class="contact-inner">
-
-        <div class="contact-left reveal">
-          <p>Estoy disponible para proyectos freelance y colaboraciones. Contame tu idea y te respondo en menos de 24 horas con una propuesta inicial sin compromiso.</p>
-          <div class="contact-items">
-            <a href="mailto:tu@email.com" class="contact-item">
-              <div class="ci-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              </div>
-              <div><div class="ci-label">Email</div><div class="ci-val">tu@email.com</div></div>
-              <div class="ci-arrow">&rarr;</div>
-            </a>
-            <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener" class="contact-item">
-              <div class="ci-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-              </div>
-              <div><div class="ci-label">LinkedIn</div><div class="ci-val">/in/tu-perfil</div></div>
-              <div class="ci-arrow">&rarr;</div>
-            </a>
-            <a href="https://github.com/tu-usuario" target="_blank" rel="noopener" class="contact-item">
-              <div class="ci-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-              </div>
-              <div><div class="ci-label">GitHub</div><div class="ci-val">/tu-usuario</div></div>
-              <div class="ci-arrow">&rarr;</div>
-            </a>
-            <a href="https://wa.me/5491100000000" target="_blank" rel="noopener" class="contact-item">
-              <div class="ci-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.41-1.41a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
-              </div>
-              <div><div class="ci-label">WhatsApp</div><div class="ci-val">+54 9 11 XXXX-XXXX</div></div>
-              <div class="ci-arrow">&rarr;</div>
-            </a>
-          </div>
-        </div>
-
-        <form class="contact-form reveal reveal-delay-1" id="contactForm" novalidate>
-          <div class="cf-group">
-            <label class="cf-label" for="cf-name">Nombre completo</label>
-            <input class="cf-input" id="cf-name" name="nombre" type="text" placeholder="María García" required>
-          </div>
-          <div class="cf-group">
-            <label class="cf-label" for="cf-email">Email</label>
-            <input class="cf-input" id="cf-email" name="email" type="email" placeholder="maria@empresa.com" required>
-          </div>
-          <div class="cf-group">
-            <label class="cf-label" for="cf-project">¿Qué necesitás?</label>
-            <input class="cf-input" id="cf-project" name="proyecto" type="text" placeholder="Sitio web, e-commerce, consultoría...">
-          </div>
-          <div class="cf-group">
-            <label class="cf-label" for="cf-message">Contame más</label>
-            <textarea class="cf-textarea" id="cf-message" name="mensaje" placeholder="Detalles del proyecto, plazos, presupuesto estimado..."></textarea>
-          </div>
-          <button type="submit" class="cf-submit">Enviar mensaje &rarr;</button>
-          <div class="form-feedback" id="formFeedback"></div>
-        </form>
-
-      </div>
+    <div class="mfield">
+      <label>Fecha</label>
+      <input type="date" id="ex-date"/>
     </div>
-  </section>
-
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="footer">
-    <div class="footer-logo">Tu Nombre</div>
-    <div class="footer-copy">&copy; 2026 &middot; Hecho con cuidado en Buenos Aires</div>
-    <div class="footer-socials">
-      <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/tu-usuario" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://twitter.com/tu-usuario" target="_blank" rel="noopener">Twitter</a>
+    <div class="mbtns">
+      <button class="mbtn mbtn-c" onclick="closeModal()">Cancelar</button>
+      <button class="mbtn mbtn-s" onclick="saveExam()">Guardar</button>
     </div>
-  </footer>
+  </div>
+</div>
 
-  <script src="main.js"></script>
+<script>
+const SCHED = {
+  1:[{s:12,e:15,t:"cw",ic:"💼",ti:"Trabajo",sub:"Turno almuerzo",tag:"Almuerzo"},
+     {s:16,e:19,t:"ca",ic:"📐",ti:"Álgebra",sub:"Bloque de estudio fijo",tag:"Estudio"},
+     {s:20,e:23,t:"cw",ic:"💼",ti:"Trabajo",sub:"Turno cena",tag:"Cena"}],
+  2:[{s:12,e:15,t:"cw",ic:"💼",ti:"Trabajo",sub:"Turno almuerzo",tag:"Almuerzo"},
+     {s:17,e:20,t:"cm",ic:"📈",ti:"Análisis Matemático",sub:"Cursada",tag:"Cursada"},
+     {s:20,e:21,t:"cd",ic:"📊",ti:"Análisis de Datos",sub:"Cursada",tag:"Cursada"},
+     {s:21.5,e:23.5,t:"cw",ic:"💼",ti:"Trabajo",sub:"Turno cena",tag:"Cena"}],
+  3:[{s:7, e:10,t:"cf",ic:"⚡",ti:"Física",sub:"Cursada",tag:"Cursada"},
+     {s:12,e:15,t:"cw",ic:"💼",ti:"Trabajo",sub:"Turno almuerzo",tag:"Almuerzo"},
+     {s:17,e:20,t:"cm",ic:"📈",ti:"Análisis Matemático",sub:"Cursada",tag:"Cursada"},
+     {s:20.5,e:23.5,t:"cw",ic:"💼",ti:"Trabajo",sub:"Turno cena",tag:"Cena"}],
+  4:[{s:12,e:15,t:"cw",ic:"💼",ti:"Trabajo",sub:"Turno almuerzo",tag:"Almuerzo"},
+     {s:15.5,e:18.5,t:"ca",ic:"📐",ti:"Álgebra",sub:"Bloque de estudio fijo",tag:"Estudio"},
+     {s:19,e:21,t:"cd",ic:"📊",ti:"Análisis de Datos",sub:"Cursada",tag:"Cursada"},
+     {s:21.25,e:23.25,t:"cw",ic:"💼",ti:"Trabajo",sub:"Turno cena",tag:"Cena"}],
+  5:[{s:12,e:15,t:"cw",ic:"💼",ti:"Trabajo",sub:"Turno almuerzo",tag:"Almuerzo"},
+     {s:17,e:20,t:"cm",ic:"📈",ti:"Análisis Matemático",sub:"Cursada",tag:"Cursada"},
+     {s:20.5,e:23.5,t:"cw",ic:"💼",ti:"Trabajo",sub:"Turno cena",tag:"Cena"}],
+  6:[{s:7, e:10,t:"cf",ic:"⚡",ti:"Física",sub:"Cursada",tag:"Cursada"},
+     {s:12,e:16,t:"cw",ic:"💼",ti:"Trabajo",sub:"Franja extendida",tag:"Extendido"},
+     {s:20,e:24,t:"cw",ic:"💼",ti:"Trabajo",sub:"Turno cena / noche",tag:"Noche"}],
+  0:[]
+};
+
+const DOW_COLS = {
+  1:["work","algebra","work"],
+  2:["work","analisis","datos","work"],
+  3:["fisica","work","analisis","work"],
+  4:["work","algebra","datos","work"],
+  5:["work","analisis","work"],
+  6:["fisica","work","work"],
+  0:[]
+};
+const COL_VAR = {work:"var(--work-s)",algebra:"var(--algebra-s)",analisis:"var(--analisis-s)",datos:"var(--datos-s)",fisica:"var(--fisica-s)"};
+const DAY_N  = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const MON_N  = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+const MON_S  = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+
+function loadSt(){ try{return JSON.parse(localStorage.getItem("ag3")||"{}");}catch{return{};} }
+function saveSt(){ localStorage.setItem("ag3",JSON.stringify(st)); }
+
+let st = loadSt();
+if(!st.exams) st.exams={};
+if(!st.notes) st.notes={};
+
+const today = new Date();
+let sel = new Date(today);
+let calY = today.getFullYear(), calM = today.getMonth();
+let darkMode = localStorage.getItem("ag3_theme") !== "light";
+applyTheme();
+
+function dkey(d){ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function fmt(h){ const hh=Math.floor(h),mm=Math.round((h%1)*60); return (hh===24?"00":String(hh).padStart(2,"0"))+":"+String(mm).padStart(2,"0"); }
+function fmtS(k){ const[,m,d]=k.split("-"); return d+" "+MON_S[parseInt(m)-1]; }
+function uniqCols(dow){ const s=new Set(),o=[]; (DOW_COLS[dow]||[]).forEach(c=>{if(!s.has(c)){s.add(c);o.push(c);}}); return o; }
+
+/* ── Calendar */
+function renderCal(){
+  document.getElementById("cal-title").textContent = MON_N[calM]+" "+calY;
+  const g = document.getElementById("cal-grid");
+  g.innerHTML = "";
+  ["LU","MA","MI","JU","VI","SÁ","DO"].forEach(d=>{
+    const e=document.createElement("div"); e.className="cal-dow"; e.textContent=d; g.appendChild(e);
+  });
+  const first = new Date(calY,calM,1);
+  const startDow = (first.getDay()+6)%7;
+  const dim  = new Date(calY,calM+1,0).getDate();
+  const dimp = new Date(calY,calM,0).getDate();
+
+  for(let i=startDow-1;i>=0;i--){
+    const e=document.createElement("div"); e.className="cal-cell other";
+    e.innerHTML=`<span class="cal-num">${dimp-i}</span><div class="cal-stripes"></div>`;
+    g.appendChild(e);
+  }
+  for(let d=1;d<=dim;d++){
+    const date=new Date(calY,calM,d), key=dkey(date), dow=date.getDay();
+    const isT=dkey(today)===key, isS=dkey(sel)===key;
+    const hasE=st.exams[key]&&st.exams[key].length>0;
+    const hasN=st.notes[key]&&st.notes[key].trim().length>0;
+    const el=document.createElement("div"); el.className="cal-cell";
+    if(isT) el.classList.add("is-today");
+    if(isS) el.classList.add("is-sel");
+    const num=document.createElement("span"); num.className="cal-num"; num.textContent=d; el.appendChild(num);
+    const stripes=document.createElement("div"); stripes.className="cal-stripes";
+    uniqCols(dow).forEach(c=>{ const s=document.createElement("div"); s.className="cal-stripe"; s.style.background=COL_VAR[c]; s.style.opacity=".8"; stripes.appendChild(s); });
+    el.appendChild(stripes);
+    if(hasE){ const dot=document.createElement("div"); dot.className="edot"; el.appendChild(dot); }
+    if(hasN){ const dot=document.createElement("div"); dot.className="ndot"; el.appendChild(dot); }
+    el.addEventListener("click",()=>{ sel=new Date(calY,calM,d); renderCal(); renderDay(); });
+    g.appendChild(el);
+  }
+  const rem = (7-((startDow+dim)%7))%7;
+  for(let i=1;i<=rem;i++){
+    const e=document.createElement("div"); e.className="cal-cell other";
+    e.innerHTML=`<span class="cal-num">${i}</span><div class="cal-stripes"></div>`;
+    g.appendChild(e);
+  }
+}
+document.getElementById("prev-m").onclick=()=>{ calM--; if(calM<0){calM=11;calY--;} renderCal(); };
+document.getElementById("next-m").onclick=()=>{ calM++; if(calM>11){calM=0;calY++;} renderCal(); };
+
+/* ── Day view */
+function renderDay(){
+  const key=dkey(sel), dow=sel.getDay(), sched=SCHED[dow]||[];
+  document.getElementById("d-name").textContent=DAY_N[dow];
+  document.getElementById("d-date").textContent=sel.getDate()+" de "+MON_N[sel.getMonth()]+" "+sel.getFullYear();
+  document.getElementById("tb-mid").innerHTML=`<strong>${DAY_N[dow]}</strong>, ${sel.getDate()} ${MON_S[sel.getMonth()]} ${sel.getFullYear()}`;
+  document.getElementById("mob-lbl").textContent=DAY_N[dow]+" "+sel.getDate();
+  const c=document.getElementById("day-content"); c.innerHTML="";
+  // Note
+  if(st.notes[key]!==undefined) c.appendChild(buildNote(key));
+  // Exams
+  (st.exams[key]||[]).forEach((ex,i)=>c.appendChild(buildExamAlert(key,ex.name,i)));
+  // Schedule
+  if(!sched.length){
+    const fd=document.createElement("div"); fd.className="free-day"; fd.textContent="Día libre — descansá bien 🌿"; c.appendChild(fd);
+  } else {
+    const t=document.createElement("div"); t.className="sched-title"; t.textContent="Cronograma del día"; c.appendChild(t);
+    sched.forEach(b=>{
+      const card=document.createElement("div"); card.className="sched-card "+b.t;
+      card.innerHTML=`<span class="sc-icon">${b.ic}</span><div class="sc-body"><div class="sc-title">${b.ti}</div><div class="sc-sub">${b.sub}</div></div><span class="sc-tag">${b.tag}</span><span class="sc-time">${fmt(b.s)} – ${fmt(b.e)}</span>`;
+      c.appendChild(card);
+    });
+  }
+  renderSbExams();
+}
+
+function buildNote(key){
+  const d=document.createElement("div"); d.className="note-card";
+  d.innerHTML=`<div class="note-hdr"><span class="note-lbl">📝 Nota del día</span><button class="note-del-b">✕</button></div><textarea class="note-ta" placeholder="Escribí tu nota acá...">${st.notes[key]||""}</textarea>`;
+  d.querySelector(".note-ta").addEventListener("input",e=>{ st.notes[key]=e.target.value; saveSt(); renderCal(); });
+  d.querySelector(".note-del-b").addEventListener("click",()=>{ delete st.notes[key]; saveSt(); renderDay(); renderCal(); });
+  return d;
+}
+function buildExamAlert(key,name,idx){
+  const d=document.createElement("div"); d.className="exam-alert";
+  d.innerHTML=`<span class="ea-icon">📋</span><div class="ea-info"><div class="ea-lbl">EXAMEN</div><div class="ea-name">${name}</div></div><button class="ea-del">✕</button>`;
+  d.querySelector(".ea-del").addEventListener("click",()=>{ st.exams[key].splice(idx,1); if(!st.exams[key].length) delete st.exams[key]; saveSt(); renderDay(); renderCal(); });
+  return d;
+}
+
+/* ── Sidebar exams */
+function renderSbExams(){
+  const list=document.getElementById("sb-exams"); list.innerHTML="";
+  const tk=dkey(today);
+  const entries=Object.entries(st.exams).filter(([k])=>k>=tk).sort(([a],[b])=>a.localeCompare(b));
+  if(!entries.length){ list.innerHTML=`<div class="empty-msg">Sin exámenes cargados</div>`; return; }
+  entries.forEach(([key,exams])=>{
+    exams.forEach((ex,i)=>{
+      const chip=document.createElement("div"); chip.className="echip";
+      chip.innerHTML=`<span class="echip-date">${fmtS(key)}</span><span class="echip-name">${ex.name}</span><button class="cdel">✕</button>`;
+      chip.querySelector(".cdel").addEventListener("click",e=>{ e.stopPropagation(); st.exams[key].splice(i,1); if(!st.exams[key].length) delete st.exams[key]; saveSt(); renderSbExams(); renderCal(); if(key===dkey(sel)) renderDay(); });
+      chip.addEventListener("click",()=>{ const[y,m,d]=key.split("-"); sel=new Date(parseInt(y),parseInt(m)-1,parseInt(d)); calY=sel.getFullYear(); calM=sel.getMonth(); renderCal(); renderDay(); });
+      list.appendChild(chip);
+    });
+  });
+}
+
+/* ── Actions */
+function toggleNote(){
+  const key=dkey(sel);
+  if(st.notes[key]!==undefined) return;
+  st.notes[key]=""; saveSt(); renderDay(); renderCal();
+  setTimeout(()=>{ const ta=document.querySelector(".note-ta"); if(ta) ta.focus(); },50);
+}
+function openExamModal(){
+  document.getElementById("ex-date").value=dkey(sel);
+  document.getElementById("ex-name").value="";
+  document.getElementById("exam-modal").classList.add("open");
+  setTimeout(()=>document.getElementById("ex-name").focus(),50);
+}
+function closeModal(){ document.getElementById("exam-modal").classList.remove("open"); }
+function saveExam(){
+  const name=document.getElementById("ex-name").value.trim();
+  const date=document.getElementById("ex-date").value;
+  if(!name||!date) return;
+  if(!st.exams[date]) st.exams[date]=[];
+  st.exams[date].push({name}); saveSt(); closeModal();
+  if(date===dkey(sel)) renderDay();
+  renderCal();
+}
+document.getElementById("exam-modal").addEventListener("click",e=>{ if(e.target===e.currentTarget) closeModal(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeModal(); });
+document.getElementById("ex-name").addEventListener("keydown",e=>{ if(e.key==="Enter") saveExam(); });
+
+document.getElementById("today-btn").onclick=()=>{ sel=new Date(today); calY=today.getFullYear(); calM=today.getMonth(); renderCal(); renderDay(); };
+document.getElementById("theme-btn").onclick=()=>{ darkMode=!darkMode; localStorage.setItem("ag3_theme",darkMode?"dark":"light"); applyTheme(); };
+function applyTheme(){ document.documentElement.setAttribute("data-theme",darkMode?"dark":"light"); document.getElementById("theme-btn").textContent=darkMode?"☀":"☾"; }
+
+function moveDay(dir){ sel.setDate(sel.getDate()+dir); if(sel.getMonth()!==calM||sel.getFullYear()!==calY){calM=sel.getMonth();calY=sel.getFullYear();} renderCal(); renderDay(); }
+document.getElementById("mob-prev").onclick=()=>moveDay(-1);
+document.getElementById("mob-next").onclick=()=>moveDay(1);
+
+renderCal(); renderDay(); renderSbExams();
+</script>
 </body>
 </html>
